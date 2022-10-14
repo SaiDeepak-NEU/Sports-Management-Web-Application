@@ -1,0 +1,15 @@
+.upcoming-game {
+    font-weight: 600;
+    margin:3%;
+    font-size: 18px;
+}
+
+.upcoming_card {
+    /* float: left; */
+    width: 36%;
+    height: 70%;   
+    background: bisque;
+    margin: 3%;
+    /* text-align: center; */
+    /* margin-top: 2%; */
+}
