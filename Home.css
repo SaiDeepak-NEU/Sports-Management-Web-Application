@@ -22,6 +22,10 @@
     display: list-item!important;
 }
 
+.navbar-nav{
+    float: right!important;
+}
+
 .d-block{
     height: 450px!important;
 }
@@ -37,4 +41,5 @@
 .h4{
     text-align: center!important;
 }
+
 
