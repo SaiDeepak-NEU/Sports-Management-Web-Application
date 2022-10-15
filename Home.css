@@ -14,6 +14,15 @@
     /* margin-top: 2%; */
 }
 
+.faqheading{
+  padding-top: 5%;
+  margin-left: 2%;
+}
+
+.accordion{
+  padding-top: 20px;
+}
+
 .site-footer
 {
   background-color:#26272b;
