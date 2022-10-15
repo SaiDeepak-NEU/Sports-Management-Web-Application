@@ -26,3 +26,23 @@ body {
     background-image:url(/Images/sports-tools_53876-138077.jpg);
     background-size: cover;
 }
+
+.venueimg{
+    height: 190px;
+    width: 50px;
+}
+
+.teammatesimg{
+    height: 195px;
+    width: 50px;
+}
+
+.connectimg{
+    height: 195px;
+    width: 50px;
+}
+
+.applyimg{
+    height: 170px;
+    width: 50px;
+}
