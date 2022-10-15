@@ -17,6 +17,27 @@
     text-align: center;
     color: #b44593;
 }
+.btn-primary{
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    border:  none;
+}
+button{
+    width: 136px;
+    margin: 0 auto; 
+    display: block;
+}
+.card {
+    margin: 0% 6% 6% 6%;
+}
+.upcoming{
+    margin-top: 6%;
+}
+.icon{
+    margin-right: 20%;
+}
+.border {
+    margin-right: 25%;
+}
 .site-footer
 {
   background-color:#26272b;
