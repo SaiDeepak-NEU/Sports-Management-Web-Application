@@ -4,6 +4,22 @@
     font-size: 18px;
 }
 
+.faqheading{
+
+    padding-top: 5%;
+  
+    margin-left: 2%;
+  
+  }
+  
+  
+  
+  .accordion{
+  
+    padding-top: 20px;
+  
+  }
+
 .upcoming_card {
     /* float: left; */
     width: 36%;
@@ -17,6 +33,22 @@
     text-align: center;
     color: #b44593;
 }
+.btn-primary{
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    border:  none;
+}
+button{
+    width: 136px;
+    margin: 0 auto; 
+    display: block;
+}
+
+.card {
+
+    margin: 0% 6% 6% 6%;
+
+}
+
 .site-footer
 {
   background-color:#26272b;
