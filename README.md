@@ -1,7 +1,7 @@
 # INFO6150_PROJECT
 Web Design Project 
 
-Project name -->
+Project name --> Playbook
 
 Description --> A website where user can book venue, connect, host tournaments and apply for trials. The website provides a platform for sports enthusiasts to engage in activities based on their interest and availability.
 
@@ -20,6 +20,6 @@ Bootstrap components used-->
 5. Carousel
 6. Modal
 7. Navbar
-8. Collapse
+8. Badge
 9. Dropdowns
 10. Close button
