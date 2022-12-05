@@ -70,7 +70,7 @@ const Login = () => {
                                             <div className="card-body p-md-5 mx-md-4">
 
                                                 <div className="text-center">
-                                                    <img src="/playbook/src/Images/img_sports.png" style={{width: "185px"}} alt="logo" />
+                                                    <img src="playbook/src/Images/img_sports.png" style={{width: "185px"}} alt="logo" />
                                                         <h4 className="mt-1 mb-5 pb-1">We are the PLAYBOOK Team</h4>
                                                     </div>
 
