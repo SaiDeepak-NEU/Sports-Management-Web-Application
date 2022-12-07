@@ -32,6 +32,7 @@ class BookVenue extends Component {
     }
 
     onChooseSport() {
+
         this.setState({
             venues: true
         });
@@ -56,8 +57,9 @@ class BookVenue extends Component {
                 <div className='choose_container' style={{ display: (!this.state.venues) ? 'block' : 'none' }}>
                 <h1>Choose Sport</h1>
                     <div className='row' style={{ display: 'flex' }}>
+
                         <div class="col-sm-6">
-                            <div class="sport_card" onClick={this.onChooseSport}>
+                            <div class="sport_card" onClick={this.onChooseSport('Badminton')}>
                                 <div class="image">
                                     <img src="https://cdn.shopify.com/s/files/1/2183/6715/files/badminton-grass-racket-115016_800x.jpg?v=1613183350" />
                                 </div>
@@ -74,7 +76,7 @@ class BookVenue extends Component {
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="sport_card">
+                            <div class="sport_card" onClick={this.onChooseSport}>
                                 <div class="image">
                                     <img src="https://wallpaperaccess.com/full/6402577.jpg" />
                                 </div>
@@ -166,6 +168,7 @@ class BookVenue extends Component {
 
                     </div>
                 </div>
+                
                 <div className='venues_container' style={{ display: (this.state.venues) ? 'block' : 'none' }}>
                     <h1>Venues</h1>
                     <div className='row'>
@@ -177,7 +180,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Badminton</h2>
+                                        <h2>Venue 1</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
@@ -199,7 +202,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Cricket</h2>
+                                        <h2>Venue 2</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
@@ -218,7 +221,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Tennis</h2>
+                                        <h2>Venue 3</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
@@ -237,7 +240,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Badminton</h2>
+                                        <h2>Venue 4</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
@@ -256,7 +259,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Cricket</h2>
+                                        <h2>Venue 5</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
@@ -275,7 +278,7 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Tennis</h2>
+                                        <h2>Venue 6</h2>
                                         <h3>Sub-Head</h3>
                                     </div>
                                     <div class="content">
