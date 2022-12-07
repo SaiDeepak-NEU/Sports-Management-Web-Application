@@ -43,10 +43,11 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Badminton</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>Serve it, smash it, win it, love it!</h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                        {/* <p>Content area</p> */}
+                                        <Button onClick={() => { alert('clicked');}} variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
@@ -60,10 +61,11 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Cricket</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>United, we play, United, we win! </h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                        {/* <p>Content area</p> */}
+                                        <Button variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
@@ -77,10 +79,10 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Tennis</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>No soft serves here!</h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                        <Button variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
@@ -100,10 +102,10 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Table Tennis</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>Get Low, Stay Low!</h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                    <Button variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
@@ -117,10 +119,10 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Basketball</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>Just Give It A Shot!</h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                    <Button variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
@@ -134,10 +136,10 @@ class BookVenue extends Component {
                                 <div class="card-inner">
                                     <div class="header">
                                         <h2>Soccer</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h3>Kick to make it count.</h3>
                                     </div>
                                     <div class="content">
-                                        <p>Content area</p>
+                                    <Button variant="contained">Book now</Button>
                                     </div>
                                 </div>
                             </div>
