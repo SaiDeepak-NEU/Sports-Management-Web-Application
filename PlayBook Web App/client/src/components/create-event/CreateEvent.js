@@ -5,6 +5,8 @@ import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import DateFieldGroup from '../common/DateFieldGroup';
+import TimeRange from 'react-time-range';
+import moment from 'moment';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import SelectFieldGroup from '../common/SelectFieldGroup';
 import { createEvent } from '../../actions/eventActions';
@@ -140,6 +142,11 @@ class CreateEvent extends Component{
                                     value={this.state.start}
                                     onChange={this.onChange}
                                     error={errors.start}
+                                />
+                                <TimeRange
+                                    startMoment={this.state.startTime}
+                                    endMoment={this.state.endTime}
+                                    onChange={this.returnFunction}
                                 />
                                 <TextAreaFieldGroup
                                     label="Description"
