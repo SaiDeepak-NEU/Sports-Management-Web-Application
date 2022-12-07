@@ -26,6 +26,7 @@ import {
  } from './components';
 import BookVenue from './components/book-venue/BookVenue';
 import SlotSelection from './components/book-venue/slot_selection';
+import FAQ from './components/faq/FAQ';
 
 if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken);
@@ -65,6 +66,7 @@ class App extends Component {
                 <PrivateRoute exact path="/edit-event/:id" component={CreateEvent} />
                 <PrivateRoute exact path="/book-venue" component={BookVenue} />
                 <PrivateRoute exact path="/select-slot" component={SlotSelection} />
+                <PrivateRoute exact path="/faq" component={FAQ} />
               </Switch>
             </Container>
             <Footer />
