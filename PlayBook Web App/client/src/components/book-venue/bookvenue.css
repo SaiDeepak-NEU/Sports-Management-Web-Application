@@ -79,6 +79,8 @@ input[type]:focus,
   animation: all 0.2s ease;
   position: relative;
   transition: all 0.2s ease-in-out;
+  background-color: aqua;
+  color:#2bc016;
 }
 
 .card:hover {
