@@ -1,0 +1,6 @@
+module.exports = {
+    // mongoURI: {Add a connection string from MongoDB Alta},
+    // secretOrKey: {Enter a random string}
+    mongoURI: "mongodb://127.0.0.1:27017/Playo",
+    secretOrKey: "Hello World"
+};
