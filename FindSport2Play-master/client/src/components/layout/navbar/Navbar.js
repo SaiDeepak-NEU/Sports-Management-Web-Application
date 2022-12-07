@@ -109,6 +109,10 @@ class Navbar extends Component {
                 Book Venue
               </Link>
 
+              <Link className="white-link" component={RouterLink} to="/faq">
+                FAQs
+              </Link>
+
             </div>
 
             <div className="toolbarRight">
