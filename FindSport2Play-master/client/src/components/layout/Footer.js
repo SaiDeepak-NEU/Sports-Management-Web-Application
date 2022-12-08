@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { AppBar, Container, Grid, Link, Typography } from '@material-ui/core';
 
-import Logo from '../../img/logop.PNG';
+import Logo from '../../img/logop.png';
 
 export default() => {
     return(
