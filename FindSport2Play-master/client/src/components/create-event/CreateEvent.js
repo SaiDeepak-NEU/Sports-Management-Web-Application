@@ -8,6 +8,8 @@ import DateFieldGroup from '../common/DateFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import SelectFieldGroup from '../common/SelectFieldGroup';
 import { createEvent } from '../../actions/eventActions';
+import TimeRange from 'react-time-range';
+import moment from 'moment';
 
 const sportList = ["Badminton", "Tennis", "Volleyball", "Basketball", "Baseball", "Running", "Table tennis", "Football", "Soccer"];
 
@@ -140,6 +142,11 @@ class CreateEvent extends Component{
                                     value={this.state.start}
                                     onChange={this.onChange}
                                     error={errors.start}
+                                />
+                                <TimeRange
+                                    startMoment={this.state.startTime}
+                                    endMoment={this.state.endTime}
+                                    onChange={this.returnFunction}
                                 />
                                 <TextAreaFieldGroup
                                     label="Description"

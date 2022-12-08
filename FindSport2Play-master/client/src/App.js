@@ -27,6 +27,7 @@ import {
 import BookVenue from './components/book-venue/BookVenue';
 import SlotSelection from './components/book-venue/slot_selection';
 import FAQ from './components/faq/FAQ';
+import Landing from './components/landing/landing';
 
 if(localStorage.jwtToken){
   setAuthToken(localStorage.jwtToken);
@@ -48,7 +49,8 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/home" component={Home} />
             <Container>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
