@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Grid, Card, CardContent, Typography, Button } from '@material-ui/core';
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'bootstrap';
+//import ReactTimeslotCalendar from "react-timeslot-calendar";
+import moment from "moment";
 
 class SlotSelection extends Component {
     constructor(props) {
@@ -23,8 +25,8 @@ class SlotSelection extends Component {
 
 
         return (
-            <h1> Select Slot</h1>
-        );
+            <h2>SlotSelection</h2>
+          );
     }
 
 }
