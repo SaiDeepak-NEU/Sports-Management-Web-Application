@@ -90,7 +90,7 @@ class Navbar extends Component {
       <AppBar className="primary-color" position="static">
         <Container>
           <Toolbar disableGutters className="toolbar">
-            <Link component={RouterLink} to="/">
+            <Link component={RouterLink} to="/home">
               <img src={Logo} className="logo" alt="Logo" />
             </Link>
 

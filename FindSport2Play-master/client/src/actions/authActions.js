@@ -3,6 +3,8 @@ import jwt_decode from 'jwt-decode';
 import axios from '../axios-lists';
 import setAuthToken from '../utilis/setAuthToken';
 import { GET_ERRORS, SET_CURRENT_USER, SET_AUTH_LOADING, REMOVE_AUTH_LOADING } from './types';
+import history from '../components/history';
+import { createBrowserHistory } from "history";
 
 export const registerUser = (userData, history) => dispatch => {
   dispatch(setAuthLoading());
@@ -69,6 +71,8 @@ export const logoutUser = () => dispatch => {
   localStorage.removeItem('jwtToken');
   setAuthToken(false);
   dispatch(setCurrentUser({}));
+  history.push('/login');
+  window.location.reload();
 };
 
 const setAuthLoading = () => {
