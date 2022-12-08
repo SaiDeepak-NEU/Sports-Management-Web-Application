@@ -59,7 +59,7 @@ class BookVenue extends Component {
                     <div className='row' style={{ display: 'flex' }}>
 
                         <div class="col-sm-6">
-                            <div class="sport_card" onClick={this.onChooseSport('Badminton')}>
+                            <div class="sport_card" onClick={this.onChooseSport}>
                                 <div class="image">
                                     <img src="https://cdn.shopify.com/s/files/1/2183/6715/files/badminton-grass-racket-115016_800x.jpg?v=1613183350" />
                                 </div>
