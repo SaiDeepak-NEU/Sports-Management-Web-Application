@@ -102,6 +102,20 @@ class Home extends Component{
                   </Button>
                 </div>
               </div>
+
+              <div className="mb-5"></div>
+
+              <div className={howItWork__container}>
+                <img src={HowitworkImg1} className={howItWork__imgReverse} alt="HowitworkImg1" />
+                <div className={howItWork__text}>
+                  <h2>Book a Venue</h2>
+                  <p>You can book any aporting venue of your choice and manage your booking.</p>
+                  <Button className="primary-color marginB-2" component={Link} to="/book-venue" variant="contained" size="large">
+                    Book Venue
+                  </Button>
+                </div>
+              </div>
+
             </div>
           </main>
         </Container>
