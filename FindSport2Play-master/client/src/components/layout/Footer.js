@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { AppBar, Container, Grid, Link, Typography } from '@material-ui/core';
 
-import Logo from '../../img/logo.png';
+import Logo from '../../img/logop.png';
 
 export default() => {
     return(
@@ -25,6 +25,10 @@ export default() => {
                             Create Event
                         </Link>
                         <span>/</span>
+                        <Link className="white-link" component={RouterLink} to="/book-venue">
+                            Book Venue
+                        </Link>
+                        <span>/</span>
                         <Link className="white-link" component={RouterLink} to="/register">
                             Get Started
                         </Link>
@@ -40,7 +44,7 @@ export default() => {
                     <Grid item xs={12} sm={3}></Grid>
                     <Grid item xs={12} sm={9}>
                         <Typography className="marginL-d7">
-                            Copyright &copy;{new Date().getFullYear()} FindSport2Play
+                            Copyright &copy;{new Date().getFullYear()} PlayBook
                         </Typography>
                     </Grid>
                 </Grid>
