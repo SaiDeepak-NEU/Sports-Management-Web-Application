@@ -1,4 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Grid, Card, CardContent, CircularProgress, Typography, Button } from '@material-ui/core';
+
+import styles from './Login.module.css';
+import TextFieldGroup from '../common/TextFieldGroup';
+import { loginUser } from '../../actions/authActions';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import {
   MDBBtn,
@@ -11,49 +18,136 @@ import {
   MDBIcon,
   MDBInput
 }
-from 'mdb-react-ui-kit';
+  from 'mdb-react-ui-kit';
 
-function App() {
-  return (
-    <MDBContainer className="my-5">
+class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+      errors: {}
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-      <MDBCard>
-        <MDBRow className='g-0'>
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/events');
+    }
+  }
 
-          <MDBCol md='6'>
-            <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt="login form" className='rounded-start w-100'/>
-          </MDBCol>
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/events');
+    }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
 
-          <MDBCol md='6'>
-            <MDBCardBody className='d-flex flex-column'>
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
-              <div className='d-flex flex-row mt-2'>
-                <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>
-                <span className="h1 fw-bold mb-0">Logo</span>
-              </div>
+  onSubmit(e) {
+    e.preventDefault();
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
 
-              <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>
+    this.props.loginUser(userData);
+  }
 
-                <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-                <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
+  render() {
+    const { errors } = this.state;
+    const { auth } = this.props;
 
-              <MDBBtn className="mb-4 px-5" color='dark' size='lg'>Login</MDBBtn>
-              <a className="small text-muted" href="#!">Forgot password?</a>
-              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
+    const {
+      login,
+      login__card,
+      login__info,
+      btn__progress } = styles;
 
-              <div className='d-flex flex-row justify-content-start'>
-                <a href="#!" className="small text-muted me-1">Terms of use.</a>
-                <a href="#!" className="small text-muted">Privacy policy</a>
-              </div>
+    return (
+      <>
+        <MDBContainer className="my-5">
+          <MDBCard>
+            <MDBRow className='g-0'>
+              <MDBCol md='6'>
+                <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt="login form" className='rounded-start w-100' />
+              </MDBCol>
 
-            </MDBCardBody>
-          </MDBCol>
+              <MDBCol md='6'>
+                <MDBCardBody className='d-flex flex-column'>
 
-        </MDBRow>
-      </MDBCard>
+                  <Grid className={login} container justify="center">
+                    <Grid item xs={12} sm={8} md={6}>
+                      <Card className={login__card}>
+                        <CardContent>
+                          <Typography className="primary-textColor" variant="h5" paragraph>
+                            Log In
+                          </Typography>
+                          <Typography variant="body2" color="secondary">
+                            {errors.servererror}
+                          </Typography>
+                          <form onSubmit={this.onSubmit} className="mb-2">
+                            <TextFieldGroup
+                              label="Email"
+                              placeholder="Email"
+                              name="email"
+                              type="email"
+                              value={this.state.email}
+                              onChange={this.onChange}
+                              error={errors.email}
+                            />
+                            <TextFieldGroup
+                              label="Password"
+                              placeholder="Password"
+                              name="password"
+                              type="password"
+                              value={this.state.password}
+                              onChange={this.onChange}
+                              error={errors.password}
+                            />
+                            <Button
+                              className={auth.loading ? "relative" : "relative primary-color marginT-1"}
+                              type="submit"
+                              variant="contained"
+                              disabled={auth.loading}>
+                              Submit
+                              {auth.loading && <CircularProgress size={24} className={btn__progress} />}
+                            </Button>
+                          </form>
+                          <Typography variant="subtitle2" className={login__info}>
+                            Dont have an account? <Link to="/register">Sign Up</Link>
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  </Grid>
 
-    </MDBContainer>
-  );
+                </MDBCardBody>
+              </MDBCol>
+
+            </MDBRow>
+          </MDBCard>
+        </MDBContainer>
+
+
+
+      </>
+
+    );
+
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { loginUser })(Login);
