@@ -14,7 +14,10 @@ class BookVenue extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            venues: false,
+            displayvenues: false,
+            sport_venues:[],
+            badminton_venues : [{"name":"Badminton Venue 1","location":"Roxbury","description":"Great place"},{"name":"Badminton Venue 2","location":"Mission Hill","description":"Great place 1"},{"name":"Badminton Venue 3","location":"Jamaica Plain","description":"Great place to play badminton"},{"name":"Badminton Venue 4","location":"Copley","description":"Great place to play badminton"}],
+            cricket_venues : ["Cricket Venue 1","Cricket Venue 2","Cricket Venue 3","Cricket Venue 4"],
             book:false,
             errors: {}
         };
@@ -25,17 +28,28 @@ class BookVenue extends Component {
         this.onChooseSport = this.onChooseSport.bind(this)
         this.onBook = this.onBook.bind(this)
 
-    //    fetch('/api/users')
-    //     .then(response => response.json())
-    //     .then(data => this.setState({ totalReactPackages: data.total }));
+        const badminton_venues = ["Badminton Venue 1","Badminton Venue 2","Badminton Venue 3","Badminton Venue 4"];
 
     }
 
-    onChooseSport() {
+    onChooseSport(sport) {
 
         this.setState({
-            venues: true
+            displayvenues: true
         });
+
+        if(sport == "Badminton"){
+            this.setState({
+                sport_venues:this.state.badminton_venues
+            });
+        }
+
+        if(sport == "Cricket"){
+            this.setState({
+                sport_venues:this.state.cricket_venues
+            });
+        }
+
     }
 
     onBook() {
@@ -49,17 +63,19 @@ class BookVenue extends Component {
 
     render() {
         const { errors } = this.state;
+       // const badminton = "Badminton";
+       // const cricket = "Cricket";
 
 
         return (
             <>
                 
-                <div className='choose_container' style={{ display: (!this.state.venues) ? 'block' : 'none' }}>
+                <div className='choose_container' style={{ display: (!this.state.displayvenues) ? 'block' : 'none' }}>
                 <h1>Choose Sport</h1>
                     <div className='row' style={{ display: 'flex' }}>
 
                         <div class="col-sm-6">
-                            <div class="sport_card" onClick={this.onChooseSport('Badminton')}>
+                            <div class="sport_card" onClick={() => this.onChooseSport('Badminton')}>
                                 <div class="image">
                                     <img src="https://cdn.shopify.com/s/files/1/2183/6715/files/badminton-grass-racket-115016_800x.jpg?v=1613183350" />
                                 </div>
@@ -76,7 +92,7 @@ class BookVenue extends Component {
                         </div>
 
                         <div class="col-sm-6">
-                            <div class="sport_card" onClick={this.onChooseSport}>
+                            <div class="sport_card" onClick={() => this.onChooseSport('Cricket')}>
                                 <div class="image">
                                     <img src="https://wallpaperaccess.com/full/6402577.jpg" />
                                 </div>
@@ -169,10 +185,13 @@ class BookVenue extends Component {
                     </div>
                 </div>
                 
-                <div className='venues_container' style={{ display: (this.state.venues) ? 'block' : 'none' }}>
+                <div className='venues_container' style={{ display: (this.state.displayvenues) ? 'block' : 'none' }}>
                     <h1>Venues</h1>
                     <div className='row'>
                         <div class="col-sm-6">
+                        {this.state.sport_venues.map(venue => 
+                                            
+                                            
                             <div class="card" onClick={this.onChooseSport}>
                                 <div style={{display:'flex'}}>
                                 <div class="imagev">
@@ -180,8 +199,8 @@ class BookVenue extends Component {
                                 </div>
                                 <div class="card-inner">
                                     <div class="header">
-                                        <h2>Venue 1</h2>
-                                        <h3>Sub-Head</h3>
+                                        <h2>{venue.name}</h2>
+                                        <h3>{venue.location}</h3>
                                     </div>
                                     <div class="content">
                                         <p>Content area</p>
@@ -192,9 +211,10 @@ class BookVenue extends Component {
                                 </div>
                                 </div>
                             </div>
+                            )}
                         </div>
 
-                        <div class="col-sm-6">
+                        {/* <div class="col-sm-6">
                             <div class="card">
                             <div style={{display:'flex'}}>
                                 <div class="imagev">
@@ -287,7 +307,7 @@ class BookVenue extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
 
 
