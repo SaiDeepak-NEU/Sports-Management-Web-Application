@@ -11,6 +11,7 @@ import "./landing.css";
 import GooglePlayStore from "./images/GooglePlayStore.png";
 import AppStore from "./images/AppStore.png";
 import rating from "./images/rating.jpg";
+import playbookstats from "./images/Playbookstats.png";
 
 // import badminton from "./images/1.png";
 // import cricket from "./images/2.jpg";
@@ -36,6 +37,9 @@ class Landing extends Component {
           </div>
           <img class="bottom-center" src={GooglePlayStore} />
           <img class="bottom-cntr" src={AppStore} />
+        </div>
+        <div class = "stats">
+          <img src = {playbookstats}/>
         </div>
         <div class="title">
         <strong>Playbook User Reviews</strong>
