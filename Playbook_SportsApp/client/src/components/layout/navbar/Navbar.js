@@ -106,7 +106,7 @@ class Navbar extends Component {
     );
 
     return (
-      <AppBar className="primary-color" position="static">
+      <AppBar className="primary-color" position="fixed">
         <Container>
           <Toolbar disableGutters className="toolbar">
           <div class = "userwelcome">Welcome <strong>{user.name}</strong>!!!</div>

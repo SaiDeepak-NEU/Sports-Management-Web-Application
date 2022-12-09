@@ -49,6 +49,7 @@ class CreateProfile extends Component{
         const {errors} = this.state;
         
         return(
+            <div style = {{marginTop: '7.5%'}}>
             <Grid container justify="center" className="marginX-1">
                 <Grid item xs={12} sm={8} md={6}>
                     <Card className="card">
@@ -108,6 +109,7 @@ class CreateProfile extends Component{
                     </Card>
                 </Grid>
             </Grid>
+            </div>
         );
     }
 }
