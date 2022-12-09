@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -19,6 +20,7 @@
     "leaflet": "^1.6.0",
     "mdb-react-ui-kit": "^5.0.0",
     "moment": "^2.29.4",
+    "node": "^19.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
@@ -30,10 +32,11 @@
     "react-time-range": "^1.0.4",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "sass": "^1.56.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
