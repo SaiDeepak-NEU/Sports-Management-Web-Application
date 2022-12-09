@@ -29,7 +29,7 @@ class FAQ extends Component {
             about any HTML can go within the <code>.accordion-body</code>,
             though the transition does limit overflow.
           </MDBAccordionItem>
-          <MDBAccordionItem collapseId={2} headerTitle="Accordion Item #2">
+          <MDBAccordionItem collapseId={2} headerTitle="Accordion Item # 2">
             <strong>This is the second item's accordion body.</strong> It is
             hidden by default, until the collapse plugin adds the appropriate
             classes that we use to style each element. These classes control the
@@ -39,7 +39,7 @@ class FAQ extends Component {
             about any HTML can go within the <code>.accordion-body</code>,
             though the transition does limit overflow.
           </MDBAccordionItem>
-          <MDBAccordionItem collapseId={3} headerTitle="Accordion Item #3">
+          <MDBAccordionItem collapseId={3} headerTitle="Accordion Item # 3">
             <strong>This is the third item's accordion body.</strong> It is
             hidden by default, until the collapse plugin adds the appropriate
             classes that we use to style each element. These classes control the
