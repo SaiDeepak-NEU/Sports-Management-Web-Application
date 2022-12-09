@@ -1,28 +1,38 @@
-import React, { Component } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Container, AppBar, Toolbar, Drawer, Badge, Link, IconButton } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import React, { Component } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  Container,
+  AppBar,
+  Toolbar,
+  Drawer,
+  Badge,
+  Link,
+  IconButton,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import NotificationsIcon from "@material-ui/icons/Notifications";
 
-import { logoutUser } from '../../../actions/authActions';
-import { checkNotification } from '../../../actions/notificationActions';
-import Desktop from './Desktop';
-import SideDrawer from './SideDrawer';
-import NotificationList from '../../notification/NotificationList';
-import UserMenu from '../UserMenu';
+import { logoutUser } from "../../../actions/authActions";
+import { checkNotification } from "../../../actions/notificationActions";
+import Desktop from "./Desktop";
+import SideDrawer from "./SideDrawer";
+import NotificationList from "../../notification/NotificationList";
+import UserMenu from "../UserMenu";
 
-import Logo from '../../../img/logop.png';
+import Logo from "../../../img/logop.png";
 
 class Navbar extends Component {
   constructor(props) {
+    //const { user } = this.props.auth;
+    
     super(props);
     this.state = {
       showNotification: false,
       showUserMenu: false,
       toggleDrawer: false,
       anchorEl1: "",
-      anchorEl2: ""
+      anchorEl2: "",
     };
     this.onShowNotification = this.onShowNotification.bind(this);
     this.onShowUserMenu = this.onShowUserMenu.bind(this);
@@ -35,7 +45,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.setState({
       showNotification: true,
-      anchorEl1: e.currentTarget
+      anchorEl1: e.currentTarget,
     });
     this.props.checkNotification();
   }
@@ -44,7 +54,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.setState({
       showUserMenu: true,
-      anchorEl2: e.currentTarget
+      anchorEl2: e.currentTarget,
     });
   }
 
@@ -52,7 +62,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.setState({
       showNotification: false,
-      anchorEl1: null
+      anchorEl1: null,
     });
   }
 
@@ -60,7 +70,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.setState({
       showUserMenu: false,
-      anchorEl2: null
+      anchorEl2: null,
     });
   }
 
@@ -71,6 +81,8 @@ class Navbar extends Component {
 
   render() {
     const { isAuthenticated, notifications } = this.props.auth;
+    const { user } = this.props.auth;
+    //alert(user.role);
 
     const handleDrawerOpen = () => {
       this.setState({ toggleDrawer: true });
@@ -81,7 +93,12 @@ class Navbar extends Component {
     };
 
     const notificationsList = (
-      <Badge badgeContent={notifications.unread} color="secondary" onClick={this.onShowNotification} className="xm-1">
+      <Badge
+        badgeContent={notifications.unread}
+        color="secondary"
+        onClick={this.onShowNotification}
+        className="xm-1"
+      >
         <NotificationsIcon />
       </Badge>
     );
@@ -100,19 +117,35 @@ class Navbar extends Component {
               </Link>
 
               {isAuthenticated ? (
-                <Link className="white-link" component={RouterLink} to="/create-event">
+                <Link
+                  className="white-link"
+                  component={RouterLink}
+                  to="/create-event"
+                >
                   Create Event
                 </Link>
               ) : null}
-
-              <Link className="white-link" component={RouterLink} to="/book-venue">
-                Book Venue
-              </Link>
+              {user.role === "Admin" ? (
+                <Link
+                  className="white-link"
+                  component={RouterLink}
+                  to="/add-venue"
+                >
+                  Add Venue
+                </Link>
+              ) : (
+                <Link
+                  className="white-link"
+                  component={RouterLink}
+                  to="/book-venue"
+                >
+                  Book Venue
+                </Link>
+              )}
 
               <Link className="white-link" component={RouterLink} to="/faq">
                 FAQs
               </Link>
-
             </div>
 
             <div className="toolbarRight">
@@ -120,11 +153,17 @@ class Navbar extends Component {
                 isAuthenticated={isAuthenticated}
                 notificationsUnread={notifications.unread}
                 onShowNotification={this.onShowNotification}
-                onShowUserMenu={this.onShowUserMenu} />
+                onShowUserMenu={this.onShowUserMenu}
+              />
 
               <div className="hiddenMobile">
                 {isAuthenticated ? notificationsList : null}
-                <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
+                <IconButton
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={handleDrawerOpen}
+                >
                   <MenuIcon fontSize="large" />
                 </IconButton>
               </div>
@@ -132,21 +171,38 @@ class Navbar extends Component {
           </Toolbar>
         </Container>
 
-        <Drawer anchor="right" open={this.state.toggleDrawer} onClick={handleDrawerClose} onClose={handleDrawerClose} onKeyDown={handleDrawerClose}>
+        <Drawer
+          anchor="right"
+          open={this.state.toggleDrawer}
+          onClick={handleDrawerClose}
+          onClose={handleDrawerClose}
+          onKeyDown={handleDrawerClose}
+        >
           <SideDrawer
             isAuthenticated={isAuthenticated}
-            logout={this.onLogoutClick} />
+            logout={this.onLogoutClick}
+          />
         </Drawer>
 
-        <NotificationList notifications={notifications.notification} anchorEl={this.state.anchorEl1} onClose={this.onHideNotification} />
-        <UserMenu anchorEl={this.state.anchorEl2} onClose={this.onHideUserMenu} onLogOut={this.onLogoutClick} />
+        <NotificationList
+          notifications={notifications.notification}
+          anchorEl={this.state.anchorEl1}
+          onClose={this.onHideNotification}
+        />
+        <UserMenu
+          anchorEl={this.state.anchorEl2}
+          onClose={this.onHideUserMenu}
+          onLogOut={this.onLogoutClick}
+        />
       </AppBar>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logoutUser, checkNotification })(Navbar);
+export default connect(mapStateToProps, { logoutUser, checkNotification })(
+  Navbar
+);
