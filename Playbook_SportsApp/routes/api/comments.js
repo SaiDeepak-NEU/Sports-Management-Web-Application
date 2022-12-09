@@ -23,7 +23,7 @@ router.post('/:id/comments', passport.authenticate('jwt', {session: false}), (re
                 userID: event.user._id,
                 authorID: req.user.id,
                 authorName: req.user.name,
-                text: "comment posted"
+                text: "posted comment"
             });
             
             const newComment = {
