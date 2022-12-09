@@ -188,12 +188,3 @@ body {
 .imagev {
   margin-right: 8rem;
 }
-
-.Loginbg {
-  background: url(///FindSport2Play-master/client/src/img/login_bg.png) no-repeat center center fixed;
-background-size: cover;
-}
-
-.center {
-  text-align: center;
-}
