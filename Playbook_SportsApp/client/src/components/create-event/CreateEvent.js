@@ -11,7 +11,7 @@ import { createEvent } from '../../actions/eventActions';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
 
-const sportList = ["Badminton", "Tennis", "Volleyball", "Basketball", "Baseball", "Running", "Table tennis", "Football", "Soccer"];
+const sportList = ["Badminton", "Tennis", "Volleyball", "Basketball", "Cricket", "Running", "Table tennis", "Football", "Soccer"];
 
 class CreateEvent extends Component{
     constructor(props){
