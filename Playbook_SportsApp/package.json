@@ -19,9 +19,17 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.7",
+    "node": "^19.2.0",
     "node-geocoder": "^3.27.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+<<<<<<< HEAD:Playbook_SportsApp/package.json
+=======
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.56.2",
+>>>>>>> 2a81d2139277e4d29c1c4c566f0be69e39ae417c:FindSport2Play-master/package.json
     "validator": "^10.6.0"
   },
   "devDependencies": {
