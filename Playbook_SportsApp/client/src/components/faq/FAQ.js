@@ -20,14 +20,7 @@ class FAQ extends Component {
         <h2>FAQs</h2>
         <MDBAccordion initialActive={1}>
           <MDBAccordionItem collapseId={1} headerTitle="Can I cancel my membership?">
-            <strong>This is the first item's accordion body.</strong> It is
-            shown by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+          Yes, you can cancel the membership at anytime with no cost involved. After you cancel the membership it might take few hours for it to be updated in our database.
           </MDBAccordionItem>
           <MDBAccordionItem collapseId={2} headerTitle="Accordion Item # 2">
             <strong>This is the second item's accordion body.</strong> It is
