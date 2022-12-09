@@ -9,6 +9,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { MDBAccordion, MDBAccordionItem } from "mdb-react-ui-kit";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 class FAQ extends Component {
   render() {
@@ -18,7 +19,7 @@ class FAQ extends Component {
       <>
         <h2>FAQs</h2>
         <MDBAccordion initialActive={1}>
-          <MDBAccordionItem collapseId={1} headerTitle="Accordion Item #1">
+          <MDBAccordionItem collapseId={1} headerTitle="Can I cancel my membership?">
             <strong>This is the first item's accordion body.</strong> It is
             shown by default, until the collapse plugin adds the appropriate
             classes that we use to style each element. These classes control the

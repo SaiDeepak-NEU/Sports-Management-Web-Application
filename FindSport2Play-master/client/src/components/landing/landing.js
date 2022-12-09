@@ -7,6 +7,8 @@ import bmimage from './badminton.jpg';
 import cricimg from './cricket.jpg';
 import playoimg from './PlayoSports.jpg'
 import './landing.css';
+import GooglePlayStore from './GooglePlayStore.png';
+import AppStore from './AppStore.png';
 import {
     MDBCard,
     MDBCardBody,
@@ -21,9 +23,12 @@ class Landing extends Component {
 
 render() {
     return(<>
-        <div class="container">
-        <img src={playoimg} alt="Logo" style= {{width:"100%"}}/>
+        <div class="cntnr">
+        <img class="bgimage" src={playoimg} alt="Logo"/>
         <div class="bottom-left">GET YOUR GAME ON!!</div>
+        <div class="bottom-center-top">, With The World's Largest Sports Community App</div>
+        <img class="bottom-center" src = {GooglePlayStore}/>
+        <img class="bottom-cntr" src = {AppStore}/>
         </div>
         <div>
         <MDBCard>
