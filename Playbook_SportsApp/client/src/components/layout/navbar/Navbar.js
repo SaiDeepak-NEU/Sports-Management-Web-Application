@@ -109,9 +109,11 @@ class Navbar extends Component {
       <AppBar className="primary-color" position="static">
         <Container>
           <Toolbar disableGutters className="toolbar">
+          <div class = "userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
             <Link component={RouterLink} to="/home">
               <img src={Logo} className="logo" alt="Logo" />
             </Link>
+            
 
             <div className="hiddenDesk">
               <Link className="white-link" component={RouterLink} to="/events">
@@ -149,9 +151,10 @@ class Navbar extends Component {
                 FAQs
               </Link>
             </div>
+            
 
             <div className="toolbarRight">
-            <div>{user.name}</div>
+            {/* <div>{user.name}</div> */}
               <Desktop
                 isAuthenticated={isAuthenticated}
                 notificationsUnread={notifications.unread}
