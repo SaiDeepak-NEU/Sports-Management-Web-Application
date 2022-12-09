@@ -9,9 +9,13 @@ body {
 .map{
   height: 400px;
 } 
-
 .logo{
-  width: 11rem;
+  width: 12rem;
+  margin-bottom: 3px;
+}
+.logo1{
+  width: 250px;
+  height: 70px;
   margin-bottom: 3px;
 }
 
@@ -30,8 +34,9 @@ body {
 }
 
 .footer-links{
-  margin-top: 5px !important;
+  margin-top: 10px !important;
   margin-bottom: 1.5rem !important;
+  text-align: center;
 }
 
 .primary-color{
@@ -52,6 +57,15 @@ body {
   text-decoration: inherit !important;
   color: white;
   margin: 0 .7rem;
+}
+
+.orange-link,
+.orange-link:link,
+.orange-link:visited{
+  text-decoration: inherit !important;
+  color: rgb(222,115,63);
+  margin: 0 .7rem;
+  font-size: 18px;
 }
 
 .toolbarRight{
@@ -93,7 +107,7 @@ body {
 
 .marginR-1{ margin-right: 1rem !important; }
 
-.marginL-d7{ margin-left: 28.7rem !important; }
+.marginL-d7{ text-align: center; }
 .marginL-1{ margin-left: 1rem !important; }
 
 .marginB-1{ margin-bottom: 1rem !important; }
