@@ -59,6 +59,7 @@ class Login extends Component{
           btn__progress } = styles;
         
         return(
+          <div style = {{marginTop: '7.5%'}}>
             <Grid className={login} container justify="center">
               <Grid item xs={12} sm={8} md={6}>
                 <Card className={login__card}>
@@ -104,6 +105,7 @@ class Login extends Component{
                 </Card>
               </Grid>
             </Grid>
+            </div>
         );
     }
 }

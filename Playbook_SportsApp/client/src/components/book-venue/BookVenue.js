@@ -98,7 +98,7 @@ class BookVenue extends Component {
       <>
         <div
           className="choose_container"
-          style={{ display: !this.state.displayvenues ? "block" : "none" }}
+          style={{ display: !this.state.displayvenues ? "block" : "none", marginTop: '7.5%'}}
         >
           <h1>Choose Sport</h1>
           <div className="row" style={{ display: "flex" }}>

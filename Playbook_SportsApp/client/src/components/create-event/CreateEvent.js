@@ -77,7 +77,7 @@ class CreateEvent extends Component{
         const {errors} = this.state;
         
         return(
-            <div class = "formcontent">
+            <div style = {{marginTop: '7.5%'}}>
             <Grid container justify="center" className="marginX-1">
                 <Grid item xs={12} sm={8} md={6}>
                     <Card className="card">
