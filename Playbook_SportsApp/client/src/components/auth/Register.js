@@ -60,6 +60,7 @@ class Register extends Component{
         btn__progress } = styles;
       
       return(
+        <div style = {{marginTop: '7.5%'}}>
         <Grid className={register} container justify="center">
           <Grid item xs={12} sm={8} md={6}>
             <Card className={register__card}>
@@ -125,6 +126,7 @@ class Register extends Component{
             </Card>
           </Grid>
         </Grid>
+        </div>
       );
     }
 }

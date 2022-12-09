@@ -52,6 +52,7 @@ class Events extends Component{
         }
         
         return(
+            <div style = {{marginTop: '10%'}}>
             <div className="minHeight">
                 <Grid container className="marginX-1">
                     <Grid item xs={12} sm={6} md={6}>
@@ -72,6 +73,7 @@ class Events extends Component{
                 </Grid>
 
                 { loading ? <Spinner /> : eventContent }
+            </div>
             </div>
         );
     }
