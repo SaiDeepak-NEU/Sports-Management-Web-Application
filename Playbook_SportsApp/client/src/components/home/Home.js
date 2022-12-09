@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 import LandingImg from '../../img/landingImg.png';
 import HowitworkImg1 from '../../img/howitworkImg1.png';
 import HowitworkImg2 from '../../img/howitworkImg2.png';
+import HowitworkImg3 from '../../img/howitworkImg3.png';
 import StepsImg from '../../img/stepsImg.png';
 
 class Home extends Component{
@@ -106,7 +107,7 @@ class Home extends Component{
               <div className="mb-5"></div>
 
               <div className={howItWork__container}>
-                <img src={HowitworkImg1} className={howItWork__imgReverse} alt="HowitworkImg1" />
+                <img src={HowitworkImg3} className={howItWork__imgReverse} alt="HowitworkImg3" />
                 <div className={howItWork__text}>
                   <h2>Book a Venue</h2>
                   <p>You can book any aporting venue of your choice and manage your booking.</p>
