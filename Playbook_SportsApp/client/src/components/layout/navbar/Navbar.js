@@ -25,6 +25,7 @@ import Logo from "../../../img/logop.png";
 class Navbar extends Component {
   constructor(props) {
     //const { user } = this.props.auth;
+   
     
     super(props);
     this.state = {
@@ -82,6 +83,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, notifications } = this.props.auth;
     const { user } = this.props.auth;
+    const {profile} = this.props;
     //alert(user.role);
 
     const handleDrawerOpen = () => {
@@ -149,12 +151,14 @@ class Navbar extends Component {
             </div>
 
             <div className="toolbarRight">
+            <div>{user.name}</div>
               <Desktop
                 isAuthenticated={isAuthenticated}
                 notificationsUnread={notifications.unread}
                 onShowNotification={this.onShowNotification}
                 onShowUserMenu={this.onShowUserMenu}
               />
+              
 
               <div className="hiddenMobile">
                 {isAuthenticated ? notificationsList : null}
@@ -166,7 +170,9 @@ class Navbar extends Component {
                 >
                   <MenuIcon fontSize="large" />
                 </IconButton>
+                
               </div>
+              
             </div>
           </Toolbar>
         </Container>

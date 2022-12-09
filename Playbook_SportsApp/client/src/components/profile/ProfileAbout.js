@@ -39,6 +39,14 @@ class ProfileAbout extends Component{
                 </CardContent>
               </Card>
             </Grid>
+            <Grid item xs={12} xl={3}>
+              <Card>
+                <CardContent>
+                  <h3>Phone Number</h3>
+                  <p>{profile.phonenumber}</p>
+                </CardContent>
+              </Card>
+            </Grid>
           </Grid>
         );
     }
