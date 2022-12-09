@@ -77,6 +77,7 @@ class CreateEvent extends Component{
         const {errors} = this.state;
         
         return(
+            <div class = "formcontent">
             <Grid container justify="center" className="marginX-1">
                 <Grid item xs={12} sm={8} md={6}>
                     <Card className="card">
@@ -165,6 +166,7 @@ class CreateEvent extends Component{
                     </Card>
                 </Grid>
             </Grid>
+            </div>
         );
     }
 }
