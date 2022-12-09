@@ -36,6 +36,7 @@ router.post('/', passport.authenticate('jwt', {session: false}),(req, res) => {
     if(req.body.handle) profileFields.handle = req.body.handle;
     if(req.body.location) profileFields.location = req.body.location;
     if(req.body.bio) profileFields.bio = req.body.bio;
+    if(req.body.phonenumber) profileFields.phonenumber = req.body.phonenumber;
     
     if(typeof req.body.favoriteSport !== 'undefined'){
         profileFields.favoriteSport = req.body.favoriteSport.split(',');

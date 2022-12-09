@@ -7,6 +7,7 @@ import "bootstrap";
 import history from "../history";
 import { createBrowserHistory } from "history";
 import { getVenues } from "../../actions/eventActions";
+import './bookvenue.css';
 
 class BookVenue extends Component {
   constructor(props) {
@@ -221,13 +222,13 @@ class BookVenue extends Component {
 
         <div
           className="venues_container"
-          style={{ display: this.state.displayvenues ? "block" : "none" }}
+          style={{ display: this.state.displayvenues ? "block" : "none",height:'575px' }}
         >
           <h1>Venues</h1>
           <div className="row">
-            <div class="col-sm-4">
+            <div class="col-sm">
               {venues.map((venue) => (
-                <div class="card">
+                <div className="sport_card">
                   <div style={{ display: "flex" }}>
                     <div class="imagev">
                       <img src={
