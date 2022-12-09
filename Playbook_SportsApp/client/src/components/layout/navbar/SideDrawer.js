@@ -8,7 +8,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import Logo from '../../../img/logo.png';
+import Logo from "../../../img/logop.png";
 
 const SideDrawer = ({ isAuthenticated, logout }) => {
     const authLinks = (
