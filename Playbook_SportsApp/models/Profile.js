@@ -14,6 +14,9 @@ const ProfileSchema = new Schema({
     location: {
         type: String
     },
+    phonenumber: {
+        type: String
+    },
     favoriteSport: {
         type: [String],
         required: true

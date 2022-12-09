@@ -15,6 +15,7 @@ class CreateProfile extends Component{
             location: '',
             favoriteSport: '',
             bio: '',
+            phonenumber:'',
             errors: {}
         };
         this.onChange = this.onChange.bind(this);
@@ -34,7 +35,8 @@ class CreateProfile extends Component{
             handle: this.state.handle,
             location: this.state.location,
             favoriteSport: this.state.favoriteSport,
-            bio: this.state.bio
+            bio: this.state.bio,
+            phonenumber:this.state.phonenumber
         };
         
         this.props.createProfile(profileData, this.props.history);
@@ -72,6 +74,14 @@ class CreateProfile extends Component{
                                     onChange={this.onChange}
                                     error={errors.location}
                                 />
+                                 <TextFieldGroup
+                                    label="Phone Number"
+                                    placeholder="Phn No:"
+                                    name="phonenumber"
+                                    value={this.state.phonenumber}
+                                    onChange={this.onChange}
+                                    error={errors.bio}
+                                />
                                 <TextFieldGroup
                                     label="Favorite Sports *"
                                     placeholder="Favorite Sports"
@@ -89,6 +99,7 @@ class CreateProfile extends Component{
                                     onChange={this.onChange}
                                     error={errors.bio}
                                 />
+                                
                                 <Button className="primary-color marginB-2" type="submit" variant="contained" fullWidth>
                                     Create
                                 </Button>

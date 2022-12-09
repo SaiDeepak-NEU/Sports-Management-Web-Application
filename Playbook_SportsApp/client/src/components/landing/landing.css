@@ -66,12 +66,24 @@
 
 }
 
+.cards {
+  padding-top: 1.5%;
+  padding-bottom: 20%;
+}
+
 .title{
   text-align: left;
   font-weight: bold;
   font-size: x-large;
   font-family: Geneva, Verdana, sans-serif;
   font-style: italic;
-  color: black;
+  color: rgb(47, 0, 255);
   margin-left: 5%;
+  margin-top: 2.5%;
+}
+
+.stats img {
+  width:100%;
+  margin: 0%;
+  padding: 0%;
 }
