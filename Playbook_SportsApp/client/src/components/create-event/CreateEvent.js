@@ -94,9 +94,9 @@ class CreateEvent extends Component{
                 <Grid item xs={12} sm={8} md={6}>
                     <Card className="card">
                         <CardContent>
-                            <Typography variant="h3" component="h1" align="center" gutterBottom>
+                            <h2 align="center" >
                                 Host Your Event
-                            </Typography>
+                            </h2>
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
                                     label="Event Name *"
@@ -155,11 +155,6 @@ class CreateEvent extends Component{
                                     value={this.state.start}
                                     onChange={this.onChange}
                                     error={errors.start}
-                                />
-                                <TimeRange
-                                    startMoment={this.state.startTime}
-                                    endMoment={this.state.endTime}
-                                    onChange={this.returnFunction}
                                 />
                                 <TextAreaFieldGroup
                                     label="Description"

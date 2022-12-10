@@ -214,8 +214,10 @@ class BookVenue extends Component {
                     <div class="card-inner">
                       <div class="header">
                         <br></br><br></br>
-                        <h4 className="marginL-d7">{venue.nameofvenue}</h4>
-                        <h6 className="marginL-d7">{venue.location}</h6>
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_23043.png" alt="new" style={{"height" : "22px", "width" : "22px", whiteSpace:'nowrap',  display:'inline', marginRight:'14px'}} />
+                        <h4 className="marginL-d7" style={{whiteSpace:'nowrap',  display:'inline'}}>{venue.nameofvenue}</h4><br></br>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Map_marker_font_awesome.svg/2048px-Map_marker_font_awesome.svg.png" alt="new" style={{"height" : "25px", "width" : "25px", whiteSpace:'nowrap',  display:'inline', marginRight:'10px'}} />
+                        <h6 className="marginL-d7" style={{whiteSpace:'nowrap',  display:'inline'}}>{venue.location}</h6>
                       </div>
                       <div class="content">
                         <p className="marginL-d7">{venue.description}</p>
@@ -223,8 +225,7 @@ class BookVenue extends Component {
                       <div>
                         <button
                           className="btn btn-primary marginL-d7" style={{marginLeft:35}}
-                          onClick={() => this.onBook(venue)}
-                        >
+                          onClick={() => this.onBook(venue)}>
                           Book
                         </button>
                       </div>
