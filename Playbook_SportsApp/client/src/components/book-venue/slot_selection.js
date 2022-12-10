@@ -18,6 +18,7 @@ import "bootstrap";
 //import ReactTimeslotCalendar from "react-timeslot-calendar";
 import moment from "moment";
 // import { response } from 'express';
+import { paymentsuccess } from './paymentdone.png'
 import {
     MDBBtn,
     MDBCard,
@@ -135,6 +136,12 @@ class SlotSelection extends Component {
       .then((data) => {
         console.log(data);
       });
+
+      this.setState({isOpen:false, 
+        isOpen1:true
+    });
+      
+
   }
 
   updateEquipment(e) {
@@ -143,6 +150,8 @@ class SlotSelection extends Component {
 
   openModal = () => this.setState({ isOpen: true });
   closeModal = () => this.setState({ isOpen: false });
+  openModal1 = () => this.setState({ isOpen1: true });
+  closeModal1 = () => this.setState({ isOpen1: false });
 
   render() {
     const { errors } = this.state;
@@ -277,7 +286,7 @@ class SlotSelection extends Component {
     </MDBContainer>
           </Modal.Body>
           <Modal.Footer>
-          <Button color= "primary" variant="contained" onClick={() => alert('Booking Successful')}>
+          <Button color= "primary" variant="contained" onClick={this.bookSlot}>
             Finalize Booking
           </Button>
             <Button variant="secondary" onClick={this.closeModal}>
@@ -285,7 +294,16 @@ class SlotSelection extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
+        <Modal show={this.state.isOpen1} onHide={this.closeModal1} style = {{ marginTop: "10%" }}>
+          <Modal.Header closeButton>
+            <Modal.Title>Payment Successful</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img src= {paymentsuccess}/>
+          </Modal.Body>
+        </Modal>
       </div>
+      
     );
   }
 }
