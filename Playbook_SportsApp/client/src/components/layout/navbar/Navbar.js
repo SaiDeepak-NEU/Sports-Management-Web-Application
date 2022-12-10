@@ -34,13 +34,19 @@ class Navbar extends Component {
       toggleDrawer: false,
       anchorEl1: "",
       anchorEl2: "",
+      iselActive:null,
     };
     this.onShowNotification = this.onShowNotification.bind(this);
     this.onShowUserMenu = this.onShowUserMenu.bind(this);
     this.onHideNotification = this.onHideNotification.bind(this);
     this.onHideUserMenu = this.onHideUserMenu.bind(this);
     this.onLogoutClick = this.onLogoutClick.bind(this);
+
+ 
+
   }
+
+ 
 
   onShowNotification(e) {
     e.preventDefault();
@@ -80,6 +86,12 @@ class Navbar extends Component {
     this.props.logoutUser();
   }
 
+  url(path) {
+    
+    this.setState({iselActive:path});
+    
+  }
+
   render() {
     const { isAuthenticated, notifications } = this.props.auth;
     const { user } = this.props.auth;
@@ -115,7 +127,7 @@ class Navbar extends Component {
 
 
             <div className="hiddenDesk">
-              <Link className="white-link" activeClassName='is-active' component={RouterLink} to="/events">
+              <Link className="white-link" activeClassName='is-active' component={RouterLink} to="/events" id="el" onClick={() => this.url('events')} style={{color:(this.state.iselActive == 'events') ? 'orange' : 'white'}}>
                 Events List
               </Link>
 
@@ -124,6 +136,9 @@ class Navbar extends Component {
                   className="white-link" activeClassName='is-active'
                   component={RouterLink}
                   to="/create-event"
+                  id="cr"
+                  onClick={() => this.url('create-event')}
+                  style={{color:(this.state.iselActive == 'create-event') ? 'orange' : 'white'}}
                 >
                   Create Event
                 </Link>
@@ -133,6 +148,9 @@ class Navbar extends Component {
                   className="white-link"
                   component={RouterLink}
                   to="/add-venue"
+                  id="ad"
+                  onClick={() => this.url('add-venue')}
+                  style={{color:(this.state.iselActive == 'add-venue') ? 'orange' : 'white'}}
                 >
                   Add Venue
                 </Link>
@@ -141,16 +159,21 @@ class Navbar extends Component {
                   className="white-link"
                   component={RouterLink}
                   to="/book-venue"
+                  id="bv"
+                  onClick={() => this.url('book-venue')}
+                  style={{color:(this.state.iselActive == 'book-venue') ? 'orange' : 'white'}}
                 >
                   Book Venue
                 </Link>
               )}
 
-              <Link className="white-link" component={RouterLink} to="/my-bookings">
+              <Link className="white-link" id="mb" component={RouterLink} to="/my-bookings" onClick={() => this.url('my-booking')}
+                  style={{color:(this.state.iselActive == 'my-booking') ? 'orange' : 'white'}}>
                 My Bookings
               </Link>
 
-              <Link className="white-link" component={RouterLink} to="/faq">
+              <Link className="white-link" id="faq" component={RouterLink} to="/faq" onClick={() => this.url('faq')}
+                  style={{color:(this.state.iselActive == 'faq') ? 'orange' : 'white'}}>
                 FAQs
               </Link>
             </div>
@@ -211,6 +234,8 @@ class Navbar extends Component {
     );
   }
 }
+
+
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
