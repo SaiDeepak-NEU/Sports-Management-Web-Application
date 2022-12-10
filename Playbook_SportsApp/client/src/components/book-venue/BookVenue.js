@@ -67,23 +67,18 @@ class BookVenue extends Component {
       displayvenues: true,
     });
     this.props.getVenues(sport);
+  
 
-    // if(sport == "Badminton"){
-    //     this.setState({
-    //         sport_venues:this.state.badminton_venues
-    //     });
-    // }
-
-    // if(sport == "Cricket"){
-    //     this.setState({
-    //         sport_venues:this.state.cricket_venues
-    //     });
-    // }
   }
 
-  onBook() {
+  onBook(venue) {
+    debugger;
+   // alert('Hi');
     //  window.location('/select-slot');
     // navigate('/select-slot');
+    localStorage.setItem("venue_id", venue._id);
+    localStorage.setItem("venue_startTime", venue.startTime);
+    localStorage.setItem("venue_endTime", venue.endTime);
     history.push("/select-slot");
     window.location.reload();
   }
@@ -227,7 +222,7 @@ class BookVenue extends Component {
                       <div>
                         <button
                           className="btn btn-primary"
-                          onClick={this.onBook}
+                          onClick={() => this.onBook(venue)}
                         >
                           Book
                         </button>
