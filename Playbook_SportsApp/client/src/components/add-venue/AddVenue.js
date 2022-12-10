@@ -23,6 +23,40 @@ const sportList = [
   "Soccer",
 ];
 
+const startTimes = [
+  "12 AM",
+  "1 AM",
+  "2 AM",
+  "3 AM",
+  "4 AM",
+  "5 AM",
+  "6 AM",
+  "7 AM",
+  "8 AM",
+  "9 AM",
+  "10 AM",
+  "11 AM",
+  "12 PM",
+  "1 PM"
+]
+
+const endTimes = [
+  "12 PM",
+  "1 PM",
+  "2 PM",
+  "3 PM",
+  "4 PM",
+  "5 PM",
+  "6 PM",
+  "7 PM",
+  "8 PM",
+  "9 PM",
+  "10 PM",
+  "11 PM",
+  "12 AM",
+  "1 AM"
+]
+
 class AddVenue extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +75,7 @@ class AddVenue extends Component {
       errors: {},
     };
     this.onChange = this.onChange.bind(this);
+    this.changeTime = this.changeTime.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
@@ -55,6 +90,8 @@ class AddVenue extends Component {
         location: event.location,
         description: event.description,
         imgurl:event.imgurl,
+        startTime: event.startTime,
+        endTime: event.endTime
       });
     }
   }
@@ -99,12 +136,20 @@ class AddVenue extends Component {
       });
     }
 
+    const startDate = new Date(this.state.startTime)
+    const endDate = new Date(this.state.endTime)
+
+    const startHours = startDate.getHours();
+    const endHours = endDate.getHours();
+
     const venueData = {
       nameofvenue: this.state.nameofvenue,
       typeofsport: this.state.typeofsport,
       location: this.state.location,
       description: this.state.description,
-      imgurl:this.state.imgurl
+      imgurl:this.state.imgurl,
+      startTime: startHours,
+      endTime: endHours
       // imgurl_badminton:this.state.imgurl_badminton,
       // imgurl_cricket:this.state.imgurl_cricket,
       // imgurl_basketball:this.state.imgurl_basketball,
@@ -120,11 +165,21 @@ class AddVenue extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  changeTime(e){
+    const d = new Date(e.startTime);
+    let time = d.getHours();
+    console.log(time)
+    if(e.startTime)
+      this.setState({startTime: e.startTime})
+
+    if(e.endTime)
+      this.setState({endTime: e.endTime})
+  }
+
   render() {
     const { errors } = this.state;
 
     return (
-      <div style = {{marginTop: '7.5%'}}>
       <Grid container justify="center" className="marginX-1">
         <Grid item xs={12} sm={8} md={6}>
           <Card className="card">
@@ -178,6 +233,12 @@ class AddVenue extends Component {
                   onChange={this.onChange}
                   error={errors.description}
                 />
+                <TimeRange
+                    startMoment={this.state.startTime}
+                    endMoment={this.state.endTime}
+                    minuteIncrement = {60}
+                    onChange={this.changeTime}
+                />
                 <Button
                   className="primary-color marginB-2"
                   type="submit"
@@ -191,7 +252,6 @@ class AddVenue extends Component {
           </Card>
         </Grid>
       </Grid>
-      </div>
     );
   }
 }

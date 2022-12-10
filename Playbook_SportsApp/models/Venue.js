@@ -21,6 +21,15 @@ const VenueSchema = new Schema({
   imgurl: {
     type: String,
   },
+  slots: {
+    type: [[Date, Date]]
+  },
+  startTime: {
+    type: Number
+  },
+  endTime: {
+    type: Number
+  }
 });
 
 module.exports = Event = mongoose.model("venue", VenueSchema);

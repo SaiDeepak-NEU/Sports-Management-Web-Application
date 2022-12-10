@@ -29,6 +29,7 @@ import AddVenue from "./components/add-venue/AddVenue";
 import SlotSelection from "./components/book-venue/slot_selection";
 import FAQ from "./components/faq/FAQ";
 import Landing from './components/landing/landing';
+import MyBookings from './components/my-bookings/MyBookings';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -95,6 +96,11 @@ class App extends Component {
                   path="/select-slot"
                   component={SlotSelection}
                 />
+                <PrivateRoute
+                  exact
+                  path="/my-bookings"
+                  component={MyBookings}
+                ></PrivateRoute>
                 <PrivateRoute exact path="/faq" component={FAQ} />
               </Switch>
             </Container>
