@@ -45,7 +45,7 @@ class Landing extends Component {
         <strong>Playbook User Reviews</strong>
         </div>
         <div class="cards">
-        <Card style={{ width: "19rem" }}>
+        <Card style={{ width: "19rem",margin:"5%", marginRight:"7%" }}>
           <Card.Body>
             <Card.Text>
             I love using this app. Very convenient to book courts for the weekends. Also the notification about upcoming events is also a cool feature
@@ -53,7 +53,7 @@ class Landing extends Component {
             <Card.Title><strong>Kashyap<img class = "rating" src={rating}/></strong></Card.Title>
           </Card.Body>
         </Card>
-        <Card style={{ width: "19rem" }}>
+        <Card style={{ width: "19rem", margin:"5%", marginRight:"7%" }}>
           <Card.Body>
             <Card.Text>
             Amazing App. It's a nice idea. I had badminton courts nearby but didn't able to find players. The app helped me to find within 10mins!!
@@ -61,7 +61,7 @@ class Landing extends Component {
             <Card.Title><strong>Deepak<img class = "rating" src={rating}/></strong></Card.Title>
           </Card.Body>
         </Card>
-        <Card style={{ width: "19rem" }}>
+        <Card style={{ width: "19rem",margin:"5%", marginRight:"7%" }}>
           <Card.Body>
             <Card.Text>
             Useful app In the midst of nonsense app making and backup. Playo is a comfortable one. It's here to stay. Need more speed. Kudos.
