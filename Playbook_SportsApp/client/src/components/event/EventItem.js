@@ -57,6 +57,7 @@ class EventItem extends Component{
             <Paper className="pad-2">
                 <Grid container>
                     <Grid item xs={12} md={6}>
+                        <br></br>  <br></br>                    
                         <Grid container spacing={6}>
                             <Grid item xs={6}>
                                 <span className={styles.labelInfo}>Type of Sport</span>
@@ -64,7 +65,7 @@ class EventItem extends Component{
                             </Grid>
                             
                             <Grid item xs={6}>
-                                <span className={styles.labelInfo}>Number of Player</span>
+                                <span className={styles.labelInfo}>Number of Players</span>
                                 <Box display="flex">
                                     <GroupIcon className={styles.icon} />
                                     <Typography variant="h6" paragraph>{event.numberofplayer}</Typography>
@@ -92,6 +93,7 @@ class EventItem extends Component{
                         </Typography>
                     </Grid>
                     <Grid container item xs={12} md={6}>
+                        <img style={{width: '100%'}} src={event.imageURL ? event.imageURL : sportImage} alt="Sport" />
                         <Box style={{width: '100%', display: 'block'}}>
                             <ButtonGroup className="floatRight">
                                 {event.user._id === auth.user.id ? (
@@ -122,7 +124,6 @@ class EventItem extends Component{
                                 </IconButton>
                             </ButtonGroup>
                         </Box>
-                        <img style={{width: '100%'}} src={event.imageURL ? event.imageURL : sportImage} alt="Sport" />
                     </Grid>
                 </Grid>
                 <hr />

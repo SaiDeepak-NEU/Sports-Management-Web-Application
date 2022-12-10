@@ -95,7 +95,7 @@ class BookVenue extends Component {
           className="choose_container"
           style={{ display: !this.state.displayvenues ? "block" : "none", marginTop: '7.5%'}}
         >
-          <h1>Choose Sport</h1>
+          <h2>Choose Sport</h2>
           <div className="row" style={{ display: "flex" }}>
             <div class="col-sm-4">
               <div
@@ -195,9 +195,9 @@ class BookVenue extends Component {
           className="venues_container"
           style={{ display: this.state.displayvenues ? "block" : "none",height:'575px',marginTop:'7.5%' }}
         >
-          <h1>Venues</h1>
+          <h2>Venues</h2>
           <div className="row">
-            <div class="col-sm">
+            <div class="col-sm" style={{width:50}}>
               {venues.map((venue) => (
                 <div className="sport_card">
                   <div style={{ display: "flex" }}>
