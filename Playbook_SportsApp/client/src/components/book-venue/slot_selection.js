@@ -166,23 +166,26 @@ class SlotSelection extends Component {
       <div>
         <br></br>
         <h2 style={{marginTop:'5%'}}>Slot selection</h2>
-        <div style={{float:'left'}}>
+        <br/>
+        <div>
           <div >
           <h3>
             Sport:
           {this.state.venueDetails
                 ? this.state.venueDetails.typeofsport
                 : "Sport"}
-            </h3><br/>
+            </h3>
             <h3>
                 Venue:
               {this.state.venueDetails
                 ? this.state.venueDetails.nameofvenue
                 : "Venue"}
             </h3>
+            <br/>
+            <br/>
            
           </div>
-          <div >
+          <div style={{textAlign:'center'}}>
           <div style={{ marginTop: "1%" }}>Choose Date:</div>
           <DateFieldGroup
             label="Select Date"

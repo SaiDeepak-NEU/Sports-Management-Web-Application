@@ -156,7 +156,7 @@ class Navbar extends Component {
             </div>
 
 
-            <div className="toolbarRight">
+            <div className="toolbarRight" style={{cursor:'pointer'}}>
               <div class="userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
               {/* <div>{user.name}</div> */}
               <Desktop

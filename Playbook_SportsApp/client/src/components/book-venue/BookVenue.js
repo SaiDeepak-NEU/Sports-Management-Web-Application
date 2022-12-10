@@ -193,7 +193,7 @@ class BookVenue extends Component {
 
         <div
           className="venues_container"
-          style={{ display: this.state.displayvenues ? "block" : "none",marginTop:'7.5%' }}
+          style={{ display: this.state.displayvenues ? "block" : "none",marginTop:'7.5%',height:'870px' }}
         >
           <h2>Venues</h2>
           <div className="row">
