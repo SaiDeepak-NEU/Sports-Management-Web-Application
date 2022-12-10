@@ -10,6 +10,7 @@ import SelectFieldGroup from '../common/SelectFieldGroup';
 import { createEvent } from '../../actions/eventActions';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
+import {Modal} from 'react-bootstrap';
 
 const sportList = ["Badminton", "Tennis", "Volleyball", "Basketball", "Cricket", "Running", "Table tennis", "Football", "Soccer"];
 
@@ -24,7 +25,8 @@ class CreateEvent extends Component{
             location: '',
             start: '',
             description: '',
-            errors: {}
+            errors: {},
+            isOpen:false
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -56,22 +58,32 @@ class CreateEvent extends Component{
     onSubmit(e){
         e.preventDefault();
         
-        const eventData = {
-            nameofevent: this.state.nameofevent,
-            typeofsport: this.state.typeofsport,
-            numberofplayer: this.state.numberofplayer,
-            imageURL: this.state.imageURL,
-            location: this.state.location,
-            start: this.state.start,
-            description: this.state.description
-        };
+      
         
-        this.props.createEvent(eventData, this.props.history);
+        this.setState({isOpen:true});
+        //setTimeout(() => console.log('Initial timeout!'), 2000);
+       
+        
     }
     
     onChange(e){
         this.setState({[e.target.name]: e.target.value});
     }
+
+    openModal = () => this.setState({ isOpen: true });
+  closeModal = () => {
+    this.setState({ isOpen: false });
+    const eventData = {
+        nameofevent: this.state.nameofevent,
+        typeofsport: this.state.typeofsport,
+        numberofplayer: this.state.numberofplayer,
+        imageURL: this.state.imageURL,
+        location: this.state.location,
+        start: this.state.start,
+        description: this.state.description
+    };
+    this.props.createEvent(eventData, this.props.history);
+  }
     
     render(){
         const {errors} = this.state;
@@ -166,6 +178,16 @@ class CreateEvent extends Component{
                     </Card>
                 </Grid>
             </Grid>
+            <Modal show={this.state.isOpen} onHide={this.closeModal} style={{ marginTop: "10%" }}>
+          <Modal.Header closeButton>
+            <Modal.Title></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+            <img src="https://www.plendify.com/assets/images/check_mark.png" style={{ width: '300px', marginLeft: '60px' }} />
+            <h4 style={{textAlign:'center'}}>Event Created Succesfully</h4>
+          </Modal.Body>
+        </Modal>
             </div>
         );
     }
