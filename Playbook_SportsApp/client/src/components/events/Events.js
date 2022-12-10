@@ -56,7 +56,7 @@ class Events extends Component{
             <div className="minHeight">
                 <Grid container className="marginX-1">
                     <Grid item xs={12} sm={6} md={6}>
-                        <Typography className="primary-textColor marginT-2" variant="h3" component="h1">
+                        <Typography className="primary-textColor marginT-2" variant="h3" component="h3">
                             List of Events
                         </Typography>
                     </Grid>

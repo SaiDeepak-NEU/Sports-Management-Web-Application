@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core';
+import './my_bookings.css';
 
 function createData(
   name,
@@ -44,8 +45,8 @@ class MyBookings extends Component {
 
     render(){
         return(
-            <div>
-                <br></br>
+            <div className='body'>
+                <br></br><br></br><br></br><br></br>
                 <h2 style={{textAlign: "center"}}>My Bookings</h2>
                 <br></br>
                 <div>
@@ -53,11 +54,11 @@ class MyBookings extends Component {
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                         <TableRow>
-                            <TableCell align="right">Venue</TableCell>
-                            <TableCell align="right">Sport</TableCell>
-                            <TableCell align="right">Date Booked</TableCell>
-                            <TableCell align="right">Time Slot</TableCell>
-                            <TableCell align="right">Equipment</TableCell>
+                            <TableCell className="cellh" align="right">Venue</TableCell>
+                            <TableCell className="cellh" align="right">Sport</TableCell>
+                            <TableCell className="cellh" align="right">Date</TableCell>
+                            <TableCell className="cellh" align="right">Time</TableCell>
+                            <TableCell className="cellh" align="right">Equipment</TableCell>
                         </TableRow>
                         </TableHead>
                         <TableBody>
@@ -66,13 +67,13 @@ class MyBookings extends Component {
                             //   key={booking.name}
                             //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                            <TableCell align="left">
+                            <TableCell className="cell" align="left">
                                 {booking.venueName}
                             </TableCell>
-                            <TableCell align="right">{booking.sport}</TableCell>
-                            <TableCell align="right">{new Date(booking.datetime).toDateString()}</TableCell>
-                            <TableCell align="right">{booking.startTime}:00 - {booking.endTime}:00</TableCell>
-                            <TableCell align="right">{booking.equipment ? booking.equipment.join(', ') : ''}</TableCell>
+                            <TableCell className="cell" align="right">{booking.sport}</TableCell>
+                            <TableCell className="cell" align="right">{new Date(booking.datetime).toDateString()}</TableCell>
+                            <TableCell className="cell" align="right">{booking.startTime}:00 - {booking.endTime}:00</TableCell>
+                            <TableCell className="cell" align="right">{booking.equipment ? booking.equipment.join(', ') : ''}</TableCell>
                             </TableRow>
                         ))}
                         </TableBody>
