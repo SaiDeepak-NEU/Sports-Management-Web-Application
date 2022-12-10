@@ -10,6 +10,7 @@ import SelectFieldGroup from "../common/SelectFieldGroup";
 import { addVenue } from "../../actions/eventActions";
 import TimeRange from "react-time-range";
 import moment from "moment";
+import {Modal} from 'react-bootstrap';
 
 const sportList = [
   "Badminton",
@@ -73,6 +74,7 @@ class AddVenue extends Component {
       imgurl_soccer:"https://daily.jstor.org/wp-content/uploads/2018/06/soccer_europe_1050x700.jpg",
       imgurl_tabletennis:"https://www.daysoftheyear.com/wp-content/uploads/world-table-tennis-day1.jpg",
       errors: {},
+      isOpen:false,
     };
     this.onChange = this.onChange.bind(this);
     this.changeTime = this.changeTime.bind(this);
@@ -159,6 +161,8 @@ class AddVenue extends Component {
     };
 
     this.props.addVenue(venueData, this.props.history);
+    this.setState({isOpen:true});
+
   }
 
   onChange(e) {
@@ -176,11 +180,14 @@ class AddVenue extends Component {
       this.setState({endTime: e.endTime})
   }
 
+  openModal = () => this.setState({ isOpen: true });
+  closeModal = () => this.setState({ isOpen: false });
+
   render() {
     const { errors } = this.state;
 
     return (
-      <Grid container justify="center" className="marginX-1">
+      <><Grid container justify="center" className="marginX-1" style={{ marginTop: '7.5%' }}>
         <Grid item xs={12} sm={8} md={6}>
           <Card className="card">
             <CardContent>
@@ -200,8 +207,7 @@ class AddVenue extends Component {
                   type="name"
                   value={this.state.nameofvenue}
                   onChange={this.onChange}
-                  error={errors.nameofvenue}
-                />
+                  error={errors.nameofvenue} />
                 <Grid container spacing={3}>
                   <Grid item xs={6}>
                     <SelectFieldGroup
@@ -211,8 +217,7 @@ class AddVenue extends Component {
                       value={this.state.typeofsport}
                       onChange={this.onChange}
                       sportList={sportList}
-                      error={errors.typeofsport}
-                    />
+                      error={errors.typeofsport} />
                   </Grid>
                 </Grid>
                 <TextFieldGroup
@@ -222,8 +227,7 @@ class AddVenue extends Component {
                   type="name"
                   value={this.state.location}
                   onChange={this.onChange}
-                  error={errors.location}
-                />
+                  error={errors.location} />
                 <TextAreaFieldGroup
                   label="Description"
                   placeholder="Details about this event"
@@ -231,19 +235,19 @@ class AddVenue extends Component {
                   type="name"
                   value={this.state.description}
                   onChange={this.onChange}
-                  error={errors.description}
-                />
+                  error={errors.description} />
                 <TimeRange
-                    startMoment={this.state.startTime}
-                    endMoment={this.state.endTime}
-                    minuteIncrement = {60}
-                    onChange={this.changeTime}
-                />
+                  startMoment={this.state.startTime}
+                  endMoment={this.state.endTime}
+                  minuteIncrement={60}
+                  onChange={this.changeTime}
+                  style={{ marginBottom: '25px' }} />
                 <Button
                   className="primary-color marginB-2"
                   type="submit"
                   variant="contained"
                   fullWidth
+                  style={{ marginTop: '15px' }}
                 >
                   Submit
                 </Button>
@@ -252,6 +256,16 @@ class AddVenue extends Component {
           </Card>
         </Grid>
       </Grid>
+      <Modal show={this.state.isOpen} onHide={this.closeModal} style={{ marginTop: "10%" }}>
+          <Modal.Header closeButton>
+            <Modal.Title></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+
+            <img src="https://www.plendify.com/assets/images/check_mark.png" style={{ width: '300px', marginLeft: '60px' }} />
+            <h4 style={{textAlign:'center'}}>Venue Added Succesfully</h4>
+          </Modal.Body>
+        </Modal></>
     );
   }
 }

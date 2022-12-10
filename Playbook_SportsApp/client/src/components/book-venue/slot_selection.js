@@ -13,6 +13,7 @@ import {
 import DateFieldGroup from "../common/DateFieldGroup";
 import TimeRange from "react-time-range";
 import { Modal } from "react-bootstrap";
+import history from "../history";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "bootstrap";
 //import ReactTimeslotCalendar from "react-timeslot-calendar";
@@ -151,7 +152,11 @@ class SlotSelection extends Component {
   openModal = () => this.setState({ isOpen: true });
   closeModal = () => this.setState({ isOpen: false });
   openModal1 = () => this.setState({ isOpen1: true });
-  closeModal1 = () => this.setState({ isOpen1: false });
+  closeModal1 = () => {
+     this.setState({ isOpen1: false });
+    history.push('/my-bookings');
+    window.location.reload();
+  }
 
   render() {
     const { errors } = this.state;
@@ -221,7 +226,7 @@ class SlotSelection extends Component {
           style={{ height: "100vh", marginLeft: "45%", marginTop: "5%", alignItems: "center", justifyContent: "center"}}
         >
           <Button color= "primary" variant="contained" onClick={this.openModal}>
-            Pay Now
+            Book Now
           </Button>
         </div>
         <Modal show={this.state.isOpen} onHide={this.closeModal} style = {{ marginTop: "10%" }}>
@@ -229,11 +234,13 @@ class SlotSelection extends Component {
             <Modal.Title>Payment Gateway</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+          <strong style={{fontSize:'30px',textAlign:'center',display:'block'}}>Your Total : $75</strong>
           <MDBContainer fluid className="py-5 gradient-custom">
       <MDBRow className="d-flex justify-content-center py-5">
         <MDBCol md="2" lg="2" xl="10">
           <MDBCard style={{ borderRadius: "15px", width: "100%", marginLeft: "0%" }}>
             <MDBCardBody>
+                
               <MDBRow className="d-flex align-items-center">
                 <MDBCol size="9">
                   <MDBInput
@@ -287,19 +294,22 @@ class SlotSelection extends Component {
           </Modal.Body>
           <Modal.Footer>
           <Button color= "primary" variant="contained" onClick={this.bookSlot}>
-            Finalize Booking
+            Finalize Payment
           </Button>
             <Button variant="secondary" onClick={this.closeModal}>
               Go Back
             </Button>
           </Modal.Footer>
         </Modal>
+        
+        {/* Success Modal */}
         <Modal show={this.state.isOpen1} onHide={this.closeModal1} style = {{ marginTop: "10%" }}>
           <Modal.Header closeButton>
-            <Modal.Title>Payment Successful</Modal.Title>
+            <Modal.Title></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src= {paymentsuccess}/>
+            
+            <img src="https://www.beauty-addict.com/wp-content/uploads/2021/02/Payment-success.png" style={{width:'300px',marginLeft:'60px'}}/>
           </Modal.Body>
         </Modal>
       </div>
