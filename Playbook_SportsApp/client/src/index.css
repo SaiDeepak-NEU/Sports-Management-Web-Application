@@ -68,7 +68,7 @@ body {
   font-size: 18px;
 }
 
-h1{
+h3{
   color: rgb(222,115,63);
 }
 
@@ -139,6 +139,38 @@ h1{
   .hiddenMobile{
     display: block;
   }
+}
+
+.sport_card1{
+  margin-left: 18%;
+  width: 62%;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.12), 2px 2px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out; 
+  box-sizing: border-box;
+  margin-top:20px;
+  margin-bottom:20px;
+  background-color:#FFF;
+  margin-right:20px ;
+  border: 1.5px solid #22435A;
+}
+.sport_card1:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.sport_card1 > .card-inner {
+  padding:10px;
+}
+.sport_card1 .header h2, h3 {
+  margin-bottom: 0px;
+  margin-top:0px;
+}
+.sport_card .header {
+  margin-bottom:5px;
+}
+.sport_card1 img{
+  width:100%;
+  height: 250px;
 }
 
 .sport_card {
@@ -254,3 +286,4 @@ h1{
 .imagev {
   margin-right: 8rem;
 }
+

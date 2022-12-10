@@ -10,6 +10,7 @@ const comments = require("./routes/api/comments");
 const venues = require("./routes/api/venues");
 const profile = require("./routes/api/profile");
 const notification = require("./routes/api/notification");
+const bookings = require('./routes/api/bookings');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use("/api/venues", venues);
 app.use("/api/events", comments);
 app.use("/api/profile", profile);
 app.use("/api/notification", notification);
+app.use("/api/bookings", bookings);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

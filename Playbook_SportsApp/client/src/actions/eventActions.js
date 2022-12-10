@@ -78,7 +78,7 @@ export const getEvent = (id) => (dispatch) => {
 export const addVenue = (venueData, history) => (dispatch) => {
   axios
     .post("/api/venues", venueData)
-    .then((res) => history.push("/events"))
+    .then((res) => history.push("/add-venue"))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,

@@ -67,23 +67,18 @@ class BookVenue extends Component {
       displayvenues: true,
     });
     this.props.getVenues(sport);
+  
 
-    // if(sport == "Badminton"){
-    //     this.setState({
-    //         sport_venues:this.state.badminton_venues
-    //     });
-    // }
-
-    // if(sport == "Cricket"){
-    //     this.setState({
-    //         sport_venues:this.state.cricket_venues
-    //     });
-    // }
   }
 
-  onBook() {
+  onBook(venue) {
+    debugger;
+   // alert('Hi');
     //  window.location('/select-slot');
     // navigate('/select-slot');
+    localStorage.setItem("venue_id", venue._id);
+    localStorage.setItem("venue_startTime", venue.startTime);
+    localStorage.setItem("venue_endTime", venue.endTime);
     history.push("/select-slot");
     window.location.reload();
   }
@@ -100,7 +95,7 @@ class BookVenue extends Component {
           className="choose_container"
           style={{ display: !this.state.displayvenues ? "block" : "none", marginTop: '7.5%'}}
         >
-          <h1>Choose Sport</h1>
+          <h2>Choose Sport</h2>
           <div className="row" style={{ display: "flex" }}>
             <div class="col-sm-4">
               <div
@@ -198,13 +193,13 @@ class BookVenue extends Component {
 
         <div
           className="venues_container"
-          style={{ display: this.state.displayvenues ? "block" : "none",height:'575px',marginTop:'7.5%' }}
+          style={{ display: this.state.displayvenues ? "block" : "none",marginTop:'7.5%',height:'870px' }}
         >
-          <h1>Venues</h1>
+          <h2>Venues</h2>
           <div className="row">
-            <div class="col-sm">
+            <div class="col-sm" style={{width:50}}>
               {venues.map((venue) => (
-                <div className="sport_card">
+                <div className="sport_card1">
                   <div style={{ display: "flex" }}>
                     <div class="imagev">
                       <img src={
@@ -218,17 +213,19 @@ class BookVenue extends Component {
                     </div>
                     <div class="card-inner">
                       <div class="header">
-                        <h2>{venue.nameofvenue}</h2>
-                        <h3>{venue.location}</h3>
+                        <br></br><br></br>
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_23043.png" alt="new" style={{"height" : "22px", "width" : "22px", whiteSpace:'nowrap',  display:'inline', marginRight:'14px'}} />
+                        <h4 className="marginL-d7" style={{whiteSpace:'nowrap',  display:'inline'}}>{venue.nameofvenue}</h4><br></br>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Map_marker_font_awesome.svg/2048px-Map_marker_font_awesome.svg.png" alt="new" style={{"height" : "25px", "width" : "25px", whiteSpace:'nowrap',  display:'inline', marginRight:'10px'}} />
+                        <h6 className="marginL-d7" style={{whiteSpace:'nowrap',  display:'inline'}}>{venue.location}</h6>
                       </div>
                       <div class="content">
-                        <p>{venue.description}</p>
+                        <p className="marginL-d7">{venue.description}</p>
                       </div>
                       <div>
                         <button
-                          className="btn btn-primary"
-                          onClick={this.onBook}
-                        >
+                          className="btn btn-primary marginL-d7" style={{marginLeft:35}}
+                          onClick={() => this.onBook(venue)}>
                           Book
                         </button>
                       </div>

@@ -25,8 +25,8 @@ import Logo from "../../../img/logop.png";
 class Navbar extends Component {
   constructor(props) {
     //const { user } = this.props.auth;
-   
-    
+
+
     super(props);
     this.state = {
       showNotification: false,
@@ -83,7 +83,7 @@ class Navbar extends Component {
   render() {
     const { isAuthenticated, notifications } = this.props.auth;
     const { user } = this.props.auth;
-    const {profile} = this.props;
+    const { profile } = this.props;
     //alert(user.role);
 
     const handleDrawerOpen = () => {
@@ -112,16 +112,16 @@ class Navbar extends Component {
             <Link component={RouterLink} to="/home">
               <img src={Logo} className="logo" alt="Logo" />
             </Link>
-            
+
 
             <div className="hiddenDesk">
-              <Link className="white-link" component={RouterLink} to="/events">
+              <Link className="white-link" activeClassName='is-active' component={RouterLink} to="/events">
                 Events List
               </Link>
 
               {isAuthenticated ? (
                 <Link
-                  className="white-link"
+                  className="white-link" activeClassName='is-active'
                   component={RouterLink}
                   to="/create-event"
                 >
@@ -146,22 +146,26 @@ class Navbar extends Component {
                 </Link>
               )}
 
+              <Link className="white-link" component={RouterLink} to="/my-bookings">
+                My Bookings
+              </Link>
+
               <Link className="white-link" component={RouterLink} to="/faq">
                 FAQs
               </Link>
             </div>
-            
 
-            <div className="toolbarRight">
-            <div class = "userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
-            {/* <div>{user.name}</div> */}
+
+            <div className="toolbarRight" style={{cursor:'pointer'}}>
+              <div class="userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
+              {/* <div>{user.name}</div> */}
               <Desktop
                 isAuthenticated={isAuthenticated}
                 notificationsUnread={notifications.unread}
                 onShowNotification={this.onShowNotification}
                 onShowUserMenu={this.onShowUserMenu}
               />
-              
+
 
               <div className="hiddenMobile">
                 {isAuthenticated ? notificationsList : null}
@@ -173,9 +177,9 @@ class Navbar extends Component {
                 >
                   <MenuIcon fontSize="large" />
                 </IconButton>
-                
+
               </div>
-              
+
             </div>
           </Toolbar>
         </Container>
