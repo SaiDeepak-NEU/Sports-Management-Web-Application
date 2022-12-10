@@ -165,27 +165,31 @@ class SlotSelection extends Component {
     return (
       <div>
         <br></br>
-        <h2>Slot selection</h2>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div style={{ display: "flex" }}>
+        <h2 style={{marginTop:'5%'}}>Slot selection</h2>
+        <div style={{float:'left'}}>
+          <div >
+          <h3>
+            Sport:
+          {this.state.venueDetails
+                ? this.state.venueDetails.typeofsport
+                : "Sport"}
+            </h3><br/>
             <h3>
+                Venue:
               {this.state.venueDetails
                 ? this.state.venueDetails.nameofvenue
                 : "Venue"}
             </h3>
-            <text style={{ marginTop: "5px" }}>
-              &nbsp;&nbsp;
-              {this.state.venueDetails
-                ? this.state.venueDetails.typeofsport
-                : "Sport"}
-            </text>
+           
           </div>
+          <div >
+          <div style={{ marginTop: "1%" }}>Choose Date:</div>
           <DateFieldGroup
             label="Select Date"
             value={this.state.selectedDate}
             onChange={this.onChange}
             error={errors.start}
-          />
+          /></div>
         </div>
         <br></br>
         <Grid container spacing={2} rowSpacing={5}>
