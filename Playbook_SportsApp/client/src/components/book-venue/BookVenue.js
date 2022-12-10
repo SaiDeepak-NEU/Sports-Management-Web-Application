@@ -72,7 +72,7 @@ class BookVenue extends Component {
   }
 
   onBook(venue) {
-    debugger;
+    
    // alert('Hi');
     //  window.location('/select-slot');
     // navigate('/select-slot');

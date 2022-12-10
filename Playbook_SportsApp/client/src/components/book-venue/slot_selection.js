@@ -39,8 +39,8 @@ class SlotSelection extends Component {
       book: false,
       errors: {},
       selectedDate: new Date(),
-      venueStartTime: parseInt(localStorage.getItem("venue_startTime")),
-      venueEndTime: parseInt(localStorage.getItem("venue_endTime")),
+      venueStartTime: null,
+      venueEndTime: null,
       startTime: new Date(),
       endTime: new Date(),
       venueDetails: null,
@@ -68,7 +68,9 @@ class SlotSelection extends Component {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        this.setState({ venueDetails: data });
+        this.setState({ venueDetails: data ,
+        venueStartTime:data.startTime,
+    venueEndTime:data.endTime});
       });
   }
 
