@@ -20,7 +20,7 @@ class FAQ extends Component {
       <>
       <div class="faqscntr">
         <br></br>
-        <h2><strong>FAQs</strong></h2>
+        <h2>FAQs</h2>
         <br></br>
         <MDBAccordion>
           <MDBAccordionItem collapseId={1} headerTitle="Can I cancel my membership?">

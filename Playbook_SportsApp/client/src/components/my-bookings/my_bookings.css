@@ -1,5 +1,7 @@
 .body {
-    height: 575px;
+    display: flex;
+    min-height: 75vh;
+    flex-direction: column;
 }
 .cell{
     font-size: 16px!important;

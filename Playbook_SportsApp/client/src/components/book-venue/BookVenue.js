@@ -193,13 +193,13 @@ class BookVenue extends Component {
 
         <div
           className="venues_container"
-          style={{ display: this.state.displayvenues ? "block" : "none",height:'575px',marginTop:'7.5%' }}
+          style={{ display: this.state.displayvenues ? "block" : "none",marginTop:'7.5%' }}
         >
           <h2>Venues</h2>
           <div className="row">
             <div class="col-sm" style={{width:50}}>
               {venues.map((venue) => (
-                <div className="sport_card">
+                <div className="sport_card1">
                   <div style={{ display: "flex" }}>
                     <div class="imagev">
                       <img src={
@@ -213,15 +213,16 @@ class BookVenue extends Component {
                     </div>
                     <div class="card-inner">
                       <div class="header">
-                        <h2>{venue.nameofvenue}</h2>
-                        <h3>{venue.location}</h3>
+                        <br></br><br></br>
+                        <h4 className="marginL-d7">{venue.nameofvenue}</h4>
+                        <h6 className="marginL-d7">{venue.location}</h6>
                       </div>
                       <div class="content">
-                        <p>{venue.description}</p>
+                        <p className="marginL-d7">{venue.description}</p>
                       </div>
                       <div>
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-primary marginL-d7" style={{marginLeft:35}}
                           onClick={() => this.onBook(venue)}
                         >
                           Book
