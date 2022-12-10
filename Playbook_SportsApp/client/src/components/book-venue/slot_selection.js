@@ -1,180 +1,298 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Grid, Card, CardContent, Typography, Button, CardActions, TextField } from '@material-ui/core';
-import DateFieldGroup from '../common/DateFieldGroup';
-import TimeRange from 'react-time-range';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import {
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  CardActions,
+  TextField,
+} from "@material-ui/core";
+import DateFieldGroup from "../common/DateFieldGroup";
+import TimeRange from "react-time-range";
+import { Modal } from "react-bootstrap";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import 'bootstrap';
+import "bootstrap";
 //import ReactTimeslotCalendar from "react-timeslot-calendar";
 import moment from "moment";
 // import { response } from 'express';
+import {
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCol,
+    MDBContainer,
+    MDBIcon,
+    MDBInput,
+    MDBRow,
+  } from "mdb-react-ui-kit";
 
 class SlotSelection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            venues: false,
-            book:false,
-            errors: {},
-            selectedDate: new Date(),
-            venueStartTime: parseInt(localStorage.getItem('venue_startTime')),
-            venueEndTime: parseInt(localStorage.getItem('venue_endTime')),
-            startTime: new Date(),
-            endTime: new Date(),
-            venueDetails: null,
-            selectedEquipment: null
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      venues: false,
+      book: false,
+      errors: {},
+      selectedDate: new Date(),
+      venueStartTime: parseInt(localStorage.getItem("venue_startTime")),
+      venueEndTime: parseInt(localStorage.getItem("venue_endTime")),
+      startTime: new Date(),
+      endTime: new Date(),
+      venueDetails: null,
+      selectedEquipment: null,
+      isOpen: false
+    };
 
-        this.onChange = this.onChange.bind(this);
-        this.bookSlot = this.bookSlot.bind(this);
-        this.changeTime = this.changeTime.bind(this);
-        this.updateEquipment = this.updateEquipment.bind(this);
+   
 
-        let access_token = localStorage.getItem('jwtToken')
-        let venue_id = localStorage.getItem('venue_id')
-        var requestOptions = {
-            method: "GET",
-            headers: {
-            Authorization: access_token,
-            }
-        };
-        fetch(`http://localhost:8081/api/venues/${venue_id}`, requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            this.setState({venueDetails: data})
-        });
+    this.onChange = this.onChange.bind(this);
+    this.bookSlot = this.bookSlot.bind(this);
+    this.changeTime = this.changeTime.bind(this);
+    this.updateEquipment = this.updateEquipment.bind(this);
 
+    let access_token = localStorage.getItem("jwtToken");
+    let venue_id = localStorage.getItem("venue_id");
+
+    var requestOptions = {
+      method: "GET",
+      headers: {
+        Authorization: access_token,
+      },
+    };
+    fetch(`http://localhost:8081/api/venues/${venue_id}`, requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({ venueDetails: data });
+      });
+  }
+
+  onChange(e) {
+    console.log(e.target.value);
+    this.setState({ selectedDate: e.target.value });
+  }
+
+  bookSlot(e) {
+    console.log(e);
+  }
+
+  changeTime(e) {
+    console.log(e);
+    if (e.startTime) this.setState({ startTime: e.startTime });
+    if (e.endTime) this.setState({ endTime: e.endTime });
+  }
+
+  populateSlots() {
+    let slots = [];
+    for (let i = this.state.venueStartTime; i < this.state.venueEndTime; i++) {
+      slots.push(
+        <Grid item xs={2}>
+          <Card sx={{ minWidth: 50, maxWidth: 250 }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 15 }} component="div">
+                {i}:00 - {i + 1}:00
+              </Typography>
+              <Typography sx={{ fontSize: 12 }} color="green">
+                Available
+              </Typography>
+            </CardContent>
+            <CardActions>
+              {/* <Button size="small" onClick={this.bookSlot} data-startHour="{i}">Book</Button> */}
+            </CardActions>
+          </Card>
+        </Grid>
+      );
     }
 
-    onChange(e){
-        console.log(e.target.value)
-        this.setState({selectedDate: e.target.value})
-    }
+    return slots;
+  }
 
-    bookSlot(e){
-        console.log(e)
-    }
+  bookSlot() {
+    let access_token = localStorage.getItem("jwtToken");
 
-    changeTime(e){
-        console.log(e)
-        if(e.startTime)
-            this.setState({startTime: e.startTime})
-        if(e.endTime)
-            this.setState({endTime: e.endTime})
-    }
+    var requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: access_token,
+      },
+      body: JSON.stringify({
+        venue: this.state.venueDetails._id,
+        venueName: this.state.venueDetails.nameofvenue,
+        sport: this.state.venueDetails.typeofsport,
+        datetime: this.state.selectedDate,
+        startTime: new Date(this.state.startTime).getHours(),
+        endTime: new Date(this.state.endTime).getHours(),
+        equipment: this.state.selectedEquipment,
+      }),
+    };
 
-    populateSlots(){
-        let slots = []
-        for (let i = this.state.venueStartTime; i < this.state.venueEndTime; i++) {
-            slots.push(
-                <Grid item xs={2}>
-                    <Card sx={{ minWidth: 50, maxWidth: 250 }}>
-                        <CardContent>
-                        <Typography sx={{ fontSize: 15 }} component="div">
-                            {i}:00 - {i+1}:00
-                        </Typography>
-                        <Typography sx={{ fontSize: 12 }} color="green">
-                            Available
-                        </Typography>
-                        </CardContent>
-                        <CardActions>
-                            {/* <Button size="small" onClick={this.bookSlot} data-startHour="{i}">Book</Button> */}
-                        </CardActions>
-                    </Card>
-                </Grid>
-            )
-        }
+    fetch("http://localhost:8081/api/bookings/new", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 
-        return slots;
-    }
+  updateEquipment(e) {
+    this.setState({ selectedEquipment: e.target.value.split(",") });
+  }
 
-    bookSlot(){ 
+  openModal = () => this.setState({ isOpen: true });
+  closeModal = () => this.setState({ isOpen: false });
 
-        let access_token = localStorage.getItem('jwtToken')
-
-        var requestOptions = {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            Authorization: access_token,
-            },
-            body: JSON.stringify({
-                "venue": this.state.venueDetails._id,
-                "venueName": this.state.venueDetails.nameofvenue,
-                "sport": this.state.venueDetails.typeofsport,
-                "datetime": this.state.selectedDate,
-                "startTime": new Date(this.state.startTime).getHours(),
-                "endTime": new Date(this.state.endTime).getHours(),
-                "equipment": this.state.selectedEquipment
-            }),
-        };
-
-        fetch('http://localhost:8081/api/bookings/new', requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-        });
-    }
-
-    updateEquipment(e){
-        this.setState({selectedEquipment: e.target.value.split(',')})
-
-    }
+  render() {
+    const { errors } = this.state;
     
-    render() {
-        const { errors } = this.state;
 
+    return (
+      <div>
+        <br></br>
+        <h2>Slot selection</h2>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex" }}>
+            <h3>
+              {this.state.venueDetails
+                ? this.state.venueDetails.nameofvenue
+                : "Venue"}
+            </h3>
+            <text style={{ marginTop: "5px" }}>
+              &nbsp;&nbsp;
+              {this.state.venueDetails
+                ? this.state.venueDetails.typeofsport
+                : "Sport"}
+            </text>
+          </div>
+          <DateFieldGroup
+            label="Select Date"
+            value={this.state.selectedDate}
+            onChange={this.onChange}
+            error={errors.start}
+          />
+        </div>
+        <br></br>
+        <Grid container spacing={2} rowSpacing={5}>
+          {this.populateSlots()}
+        </Grid>
+        <br></br>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            color: "black",
+          }}
+        >
+          <div style={{ marginTop: "1%" }}>Choose Slot:</div>
+          <TimeRange
+            startMoment={this.state.startTime}
+            endMoment={this.state.endTime}
+            minuteIncrement={60}
+            onChange={this.changeTime}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            color: "black",
+          }}
+        >
+          <div style={{ marginTop: "5%", marginBottom: "0%" }}>Enter Equipment required:</div>
+          <TextField style={{ marginTop: "5%", marginBottom: "0%"}} type="name" onChange={this.updateEquipment}></TextField>
+          {/* <Button onClick={this.bookSlot} variant="contained" size="small">
+            Book
+          </Button> */}
+        </div>
+        <div
+          style={{ height: "100vh", marginLeft: "45%", marginTop: "5%", alignItems: "center", justifyContent: "center"}}
+        >
+          <Button color= "primary" variant="contained" onClick={this.openModal}>
+            Pay Now
+          </Button>
+        </div>
+        <Modal show={this.state.isOpen} onHide={this.closeModal} style = {{ marginTop: "10%" }}>
+          <Modal.Header closeButton>
+            <Modal.Title>Payment Gateway</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+          <MDBContainer fluid className="py-5 gradient-custom">
+      <MDBRow className="d-flex justify-content-center py-5">
+        <MDBCol md="2" lg="2" xl="10">
+          <MDBCard style={{ borderRadius: "15px", width: "100%", marginLeft: "0%" }}>
+            <MDBCardBody>
+              <MDBRow className="d-flex align-items-center">
+                <MDBCol size="9">
+                  <MDBInput
+                    label="Card Number"
+                    id="form1"
+                    type="text"
+                    placeholder="1234 5678 9012 3457"
+                  />
+                </MDBCol>
+                <MDBCol size="3">
+                  <img
+                    src="https://img.icons8.com/color/48/000000/visa.png"
+                    alt="visa"
+                    width="64px"
+                  />
+                </MDBCol>
 
-        return (
-            <div>
-                <br></br>
-                <h2>Slot selection</h2>
-                <div style={{display: "flex", justifyContent: "space-between"}}>
-                    <div style={{display: "flex"}}>
-                        <h3>{this.state.venueDetails ? this.state.venueDetails.nameofvenue : "Venue"}</h3>
-                        <text style={{marginTop: '5px'}}>&nbsp;&nbsp;{this.state.venueDetails ? this.state.venueDetails.typeofsport : "Sport"}</text>
-                    </div>
-                    <DateFieldGroup
-                        label="Select Date"
-                        value={this.state.selectedDate}
-                        onChange={this.onChange}
-                        error={errors.start}
-                    />
-                </div>
-                <br></br>
-                <Grid container spacing={2} rowSpacing={5}>
-                    {this.populateSlots()}   
-                </Grid>
-                <br></br>
-                <div style={{display: "flex", justifyContent: "center", gap: "20px", color: "black"}}>
-                    <div style={{marginTop: '1%'}}>
-                        Choose Slot:
-                    </div>
-                    <TimeRange
-                        startMoment={this.state.startTime}
-                        endMoment={this.state.endTime}
-                        minuteIncrement={60}
-                        onChange={this.changeTime}
-                    />
-                </div>
-                <div style={{display: "flex", justifyContent: "center", gap: "20px", color: "black"}}>
-                    <div style={{marginTop: '1%'}}>
-                        Enter Equipment required:
-                    </div>
-                    <TextField type="name" onChange={this.updateEquipment}></TextField>
-                    <Button onClick={this.bookSlot} variant="contained" size='small'>Book</Button>
-                </div>
-            </div>
-          );
-    }
+                <MDBCol size="9">
+                  <MDBInput
+                    label="Cardholder's Name"
+                    id="form2"
+                    type="text"
+                    placeholder="Cardholder's Name"
+                  />
+                </MDBCol>
 
+                <MDBCol size="6">
+                  <MDBInput
+                    label="Expiration"
+                    id="form2"
+                    type="text"
+                    placeholder="MM/YYYY"
+                  />
+                </MDBCol>
+                <MDBCol size="3">
+                  <MDBInput
+                    label="CVV"
+                    id="form2"
+                    type="text"
+                    placeholder="&#9679;&#9679;&#9679;"
+                  />
+                </MDBCol>
+                <MDBCol size="3">
+                </MDBCol>
+              </MDBRow>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+          </Modal.Body>
+          <Modal.Footer>
+          <Button color= "primary" variant="contained" onClick={() => alert('Booking Successful')}>
+            Finalize Booking
+          </Button>
+            <Button variant="secondary" onClick={this.closeModal}>
+              Go Back
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => ({
-    profile: state.profile,
-    errors: state.errors
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps)(withRouter(SlotSelection));
