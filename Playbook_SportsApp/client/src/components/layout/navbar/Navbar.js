@@ -109,7 +109,6 @@ class Navbar extends Component {
       <AppBar className="primary-color" position="fixed">
         <Container>
           <Toolbar disableGutters className="toolbar">
-          <div class = "userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
             <Link component={RouterLink} to="/home">
               <img src={Logo} className="logo" alt="Logo" />
             </Link>
@@ -154,6 +153,7 @@ class Navbar extends Component {
             
 
             <div className="toolbarRight">
+            <div class = "userwelcome">Welcome <strong>{user.name}</strong>!!!</div>
             {/* <div>{user.name}</div> */}
               <Desktop
                 isAuthenticated={isAuthenticated}
