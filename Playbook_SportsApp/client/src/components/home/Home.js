@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Container, Button } from '@material-ui/core';
 
 import styles from './Home.module.css';
-import LandingImg from '../../img/landingImg.png';
+// import LandingImg from '../../img/landingImg.png';
+import LandingImg from '../../img/Lebron.gif';
 import HowitworkImg1 from '../../img/howitworkImg1.png';
 import HowitworkImg2 from '../../img/howitworkImg2.png';
 import HowitworkImg3 from '../../img/howitworkImg3.png';
